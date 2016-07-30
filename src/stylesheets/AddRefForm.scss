@@ -1,0 +1,49 @@
+.refInputForm {
+  
+  .form-control {
+    width: auto;
+    position: relative;
+  }
+
+  label {
+    color: white;
+    font-size: 1.5rem;
+    letter-spacing: 2pt;
+    font-family: sans-serif;
+  }
+
+  input[type=text]{
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    transition: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 20px 0;
+    font-size: 2rem;
+  }
+}
+
+.tool-tip {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  .tool-tip-icon {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 14pt;	
+  }
+}
+
+.tooltip-inner {
+  background-color: white;
+  color: darkturquoise;
+  font-size: 11pt;
+}
+
+.tooltip.left .tooltip-arrow {
+	border-left-color: white;
+}

@@ -1,0 +1,36 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #315481;
+  background-image: linear-gradient(to bottom, darkturquoise, paleturquoise  160%);
+  background-attachment: fixed;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+ }
+
+ .app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 100%;
+  background: rgba(0, 0, 0, 0); 
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:active:focus {
+  background-color: transparent;
+  outline: none;
+  color: white;
+  box-shadow: none;
+}

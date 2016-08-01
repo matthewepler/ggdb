@@ -1,25 +1,70 @@
 import React, { Component, PropTypes } from 'react';
+import { Panel } from 'react-bootstrap';
+import classNames from 'classnames';
 
 // stylesheets
 import '../stylesheets/RefDetail.scss';
 
+
+
 class RefDetail extends Component {
 	constructor() {
 		super();
-		this.state = {};
+		this.state = {
+			fromToOpen: false,
+			dataViz: null
+		};
 	}
+
+	fromToClick(event) {	
+		// console.log(this.toElement); // testing references to elements, works!
+	
+		const prevSubject = this.state.dataViz;
+		
+		if (this.state.fromToOpen) {
+			if (prevSubject != null && event.currentTarget !== this.state.dataViz) {
+				prevSubject.classList.toggle('outline');
+			}
+			if (event.currentTarget === this.state.dataViz) {
+				event.currentTarget.classList.toggle('outline');
+				this.setState({
+					fromToOpen: false,
+				});
+				return
+			} else {
+				// if the panel is open and we're switching to another button
+				event.currentTarget.classList.toggle('outline');
+				this.setState({ dataViz: event.currentTarget });
+			} 
+		} else { 
+		// open the Panel
+			event.currentTarget.classList.toggle('outline');
+			this.setState({
+				fromToOpen: true,
+				dataViz: event.currentTarget
+			});
+		}
+	}
+
 
 	render() {
 		return (
 			<div className="ref-detail-wrapper">
 				<div className="screengrab">
 					<img src={`assets/img/screens/${this.props.reference.screenshot}`} alt="screengrab" />
-					<div className="screengrab-detail"> <span className="from-to">{this.props.reference.from}</span> <span>
-						<i className="fa fa-long-arrow-right" aria-hidden="true"></i>
-						</span> <span className="from-to"> {this.props.reference.to} </span> <span>
-						<i className="fa fa-at" aria-hidden="true"> </i>
-						</span> <span className="from-to">{this.props.reference.location} </span>
+					<div className="screengrab-detail"> 
+						<span className="from" onClick={this.fromToClick.bind(this)} ref={(c) => this.fromElement = c}>{this.props.reference.from} </span>
+					  <span><i className="fa fa-long-arrow-right" aria-hidden="true"></i></span>
+						<span className="to" onClick={this.fromToClick.bind(this)} ref={(c) => this.toElement = c}> {this.props.reference.to} </span> 
+						<span><i className="fa fa-at" aria-hidden="true"> </i></span>
+						<span className="location" onClick={this.fromToClick.bind(this)} ref={(c) => this.locationElement = c}>{this.props.reference.location} </span>
 					</div>
+					
+					<Panel collapsible expanded={this.state.fromToOpen}>
+					{this.state.dataViz == null ? '' : this.state.dataViz.innerHTML}
+						{/* <Graph data={this.state.dataViz} /> */}
+					</Panel>
+					
 					<p>A spritely young woman (whose name we do not yet know) sits down with Lorelai. They exchange banter and lip gloss. Are they sisters? Friends? We're about to find out.</p>
 				</div>
 

@@ -13,7 +13,7 @@ class Reference extends Component {
   constructor() {
     super();
     this.state = {
-      open: false,
+      open: true,
     };
   }
 
@@ -30,7 +30,7 @@ class Reference extends Component {
   	const lineSplit = this.props.reference.quote.split(this.props.reference.ref);
   	
     const headline = (
-      <div className="headline">
+      <div className="headline" onClick={this.handleClick.bind(this)}>
         <p className="ref-marker">{this.props.reference.marker}</p>
         <div className="person-thumb">
           <img className="clip-circle" src="assets/img/people/rory.jpg" alt="RuPaul" />
@@ -44,11 +44,10 @@ class Reference extends Component {
   }
 
   render() {
-    console.log(this.state.open);
   	const header = this.renderHeader();
 
   	return (
-      <Panel className="ref-panel" header={header} onClick={this.handleClick.bind(this)} collapsible>
+      <Panel className="ref-panel" header={header} collapsible expanded={this.state.open}>
      		<RefDetail reference={this.props.reference}/>
    		</Panel>
     );

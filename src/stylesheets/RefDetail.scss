@@ -56,19 +56,23 @@ $circle-size: 4rem;
 .screengrab-detail {
 	color: white;
 	font-size: 2rem;
-	margin-top: 1rem;
 	margin-bottom: 2rem;
+	margin-top: 1rem;
 	
-	.from-to {
-		color: white;
-		padding: 0.5rem;
-		border: 3px solid white;
+	.from, .to, .location {
 		border-radius: 10px;
+		color: #2F2F2F;
+		background-color: paleturquoise;
+		padding: 0.5rem;
 		padding: 0.5rem 1rem;
 		margin: 1rem 0;
 
 		:first-child {
 			margin-left: 0;
+		}
+
+		&:hover {
+			cursor: pointer;
 		}
 	}
 
@@ -77,6 +81,10 @@ $circle-size: 4rem;
 		font-size: 2rem;
 		margin: 0 1rem;
 	}
+}
+
+.outline {
+	border: 3px solid white;
 }
 
 

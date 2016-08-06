@@ -135,7 +135,11 @@ class RefDetail extends Component {
 					</div>
 					<div>
 						<div className="ref-descrip">
-							<p><span className="button-link ref-descrip-strong">{this.props.reference.ref}</span> {this.props.reference.descrip}</p>
+							<p><span className="button-link ref-descrip-strong"
+											 onClick={this.refDetailClick.bind(this)}
+											 dangerouslySetInnerHTML={{__html: this.props.reference.ref}}>
+								 </span> {this.props.reference.descrip}
+						  </p>
 						</div>
 						<div className="ref-tags">
 							<ul>
@@ -160,12 +164,12 @@ class RefDetail extends Component {
 									</a>
 								</li>
 								<li>
-									<a href="https://www.youtube.com/results?search_query=rupaul" className="button-link" target="_blank">
+									<a href="https://www.google.com/search?q=rupaul&tbm=isch" className="button-link" target="_blank">
 									  <i className="fa fa-camera" aria-hidden="true"></i>
 									</a>
 								</li>
 								<li>
-									<a href="https://www.google.com/search?q=rupaul&tbm=isch" className="button-link" target="_blank">
+									<a href="https://www.youtube.com/results?search_query=rupaul" className="button-link" target="_blank">
 									  <i className="fa fa-video-camera" aria-hidden="true"></i>
 									</a>
 								</li>

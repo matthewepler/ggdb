@@ -1,12 +1,11 @@
 # TO DO
-* Category and timeline drill-downs
-
-
 * form - should look exactly like an entry but with placeholders for everything
 
 * re-instate propTypes
 
 * firebase
+
+* dataviz
 
 * links for each entry
 

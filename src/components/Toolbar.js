@@ -1,26 +1,35 @@
 import React, { Component, PropTypes } from 'react';
-import { ButtonToolbar, Button } from 'react-bootstrap';
+import { Button, Panel } from 'react-bootstrap';
+
+// components
+import AddRefForm from './AddRefForm.js';
 
 // styles
 import '../stylesheets/Toolbar.scss';
 
 
 class Toolbar extends Component {
+	constructor() {
+		super();
+		this.state = {
+			open: true,
+		};
+	}
+
 	handleClick(event) {
-		alert("clicked");
+		this.setState({ open: !this.state.open });
 	}
 
 	render() {
 		return (
-			<ButtonToolbar>
-      	<Button className="addButton" bsSize="large" onClick={this.props.formHandler}>+</Button>
-    	</ButtonToolbar>
+			<div className="toolbar-wrapper">
+      	<Button className="addButton" bsSize="large" onClick={this.handleClick.bind(this)}>+</Button>
+      	<Panel collapsible expanded={this.state.open}>
+						<AddRefForm formOpen={this.state.formOpen}/>
+				</Panel>
+    	</div>
 		);
 	}
 }
-
-Toolbar.propTypes = {
-  formHandler: PropTypes.func.isRequired, // calls a function in App to open the addRefForm component.
-};
 
 export default Toolbar;

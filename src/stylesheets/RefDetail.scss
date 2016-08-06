@@ -5,6 +5,7 @@ $sm-screen:  640;
 $circle-size: 4rem;
 
 $base-color-lt: #E6F9FF;
+$highlight: white;
 
 @mixin forLargeScreens($media) {
 	@media (min-width: $media/16+em) { @content; }
@@ -13,7 +14,7 @@ $base-color-lt: #E6F9FF;
 .ref-detail-wrapper {
 	display: flex;
 	flex-direction: column;
-	max-width: 95%;
+	max-width: 88%;
 	padding-left: 4 * $circle-size + 1.5rem;
 	font-family: 'Source Sans Pro', sans-serif;
 
@@ -71,6 +72,7 @@ $base-color-lt: #E6F9FF;
 
 	&:hover {
 		cursor: pointer;
+		border: 3px solid $highlight;
 	}
 }
 
@@ -94,7 +96,7 @@ $base-color-lt: #E6F9FF;
 }
 
 .outline {
-	border: 3px solid white;
+	border: 3px solid $highlight;
 }
 
 .ref-tags {

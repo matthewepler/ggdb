@@ -24,6 +24,7 @@ $highlight: white;
       width: $circle-size;
       border-radius: 50%;
       border: double 8px $base-color-lt;
+      margin-top: 2rem;
     }
   } 
 
@@ -35,6 +36,7 @@ $highlight: white;
     font-weight: 300;
     letter-spacing: 1.25px;
     border-radius: 5px;
+    width: 100%;
 
     &:hover {
       text-decoration: none;
@@ -43,6 +45,10 @@ $highlight: white;
     strong {
       font-weight: 400;
       font-size: 2.75rem;
+    }
+
+    & input {
+      color: black;
     }
   }  
 
@@ -69,11 +75,28 @@ $highlight: white;
 
   .rf-screengrab {
     margin-bottom: 2rem;
+    
     img {
-      width: 500px;
-      height: 250px;
-      max-width: 500px;
+      max-width: 595px;
+      margin-top: 1rem;
+      background-image: linear-gradient(to bottom, darkturquoise, $base-color-lt  160%);
     }
+
+    label {
+      text-align: center;
+      position: absolute;
+      margin-left: -275px;
+      margin-top: 105px;
+
+      i {
+        font-size: 5rem;
+      }
+    }
+  }
+
+  .empty-img {
+    width: 500px;
+    height: 250px;
   }
         
   .rf-ref-detail {
@@ -90,19 +113,21 @@ $highlight: white;
       margin-top: 0;
       font-family: 'Source Sans Pro', sans-serif;
     }
-
-    .rf-ref-descrip {
-      & > p {
-        font-size: 2rem;
+    
+    .rf-ref-items {
+      .rf-ref-descrip {
+        & > p {
+          font-size: 2rem;
+        }
+        .rf-ref-descrip-strong {
+          font-weight: 600;
+          margin-right: 0.75rem;
+        }
       }
-      .rf-ref-descrip-strong {
-        font-weight: 600;
-        margin-right: 0.75rem;
-      }
-    }
 
-    .rf-image-descrip {
-      margin-bottom: 3rem;
+      .rf-image-descrip {
+        margin-bottom: 3rem;
+      }
     }
   }
 }
@@ -157,31 +182,35 @@ $highlight: white;
   }
 }
 
-.refInputForm {
-  
-  .form-control {
-    width: auto;
-    position: relative;
-  }
+input[type=text] {
+  background-color: transparent;
+  color: white;
+  width: inherit;
+  border: none;
 
-  label {
-    color: white;
-    font-size: 1.5rem;
-    letter-spacing: 2pt;
-    font-family: sans-serif;
-  }
-
-  input[type=text]{
-    background: rgba(0, 0, 0, 0);
-    border: none;
-    border-bottom: 1px solid white;
-    color: white;
-    transition: none;
-    box-shadow: none;
-    border-radius: 0;
-    padding: 20px 0;
-    font-size: 2rem;
+  &:focus {
+    border-bottom: 1px solid $highlight;
+    outline: none;
   }
 }
 
 
+textarea {
+  background-color: transparent;
+  color: black;
+  border: none;
+  width: 100%;
+
+  &:focus {
+    border-bottom: 1px solid $highlight;
+    outline: none;
+  }
+}
+
+label:hover {
+  cursor: pointer;
+}
+
+input[type=file] {
+  display: none;
+}

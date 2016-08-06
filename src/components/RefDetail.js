@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { Panel } from 'react-bootstrap';
-import classNames from 'classnames';
 
 // stylesheets
 import '../stylesheets/RefDetail.scss';

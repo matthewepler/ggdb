@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import classNames from 'classnames';
 
 // components
 import { Button, Col, Collapse, ControlLabel, Form, FormControl, FormGroup, Glyphicon, HelpBlock, OverlayTrigger, Tooltip } from 'react-bootstrap';
@@ -11,26 +12,57 @@ class AddRefForm extends Component {
 	
 	constructor() {
 		super();
-		this.state = {};
+		this.state = {
+			currScreengrab: null,
+		};
 	}
 
+	screengrabChange(e) {
+		const file = e.target.files[0];
+		if (file.type.match('image.*')) {
+			let reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload = e => {
+				this.setState({ currScreengrab: e.target.result });
+				this.screengrabElement.src = e.target.result;
+			}
+		}
+	}
+
+	displayPicture(result) {
+		
+	}
+
+
+
 	render() {
+		const formClasses = classNames({
+      'empty-img' : this.state.currScreengrab === null,
+    });
+
 		return (
 			<div className="add-ref-form-wrapper">
+			<form>
 				<div className="rf-headline-wrapper" >
-	        <p className="rf-ref-marker">time</p>
+	        <p className="rf-ref-marker"><input type="text" placeholder="00:00"/></p>
 	        <div className="rf-person-thumb">
 	          <img className="rf-clip-circle" src="assets/img/people/smiley.png" alt="face" />
 	        </div>
 	        <i className="rf-left-arrow fa fa-caret-left" aria-hidden="true"></i>
-	        <span className="rf-ref-quote">quote</span>
+	        <span className="rf-ref-quote"><textarea placeholder="quote"/></span>
 	      </div> 
 
 
 				<div className="rf-ref-detail-wrapper">
 					<div className="rf-screengrab">
-						<img src="" alt="screengrab" style={{backgroundColor: "grey"}}/>
-						
+						<img className={formClasses} src="" ref={c => this.screengrabElement = c}/>
+						{
+							this.state.currScreengrab === null ? 
+							<label htmlFor="screengrab-input"><i className="fa fa-arrow-circle-up" aria-hidden="true"></i><br/>screengrab</label>
+							: ''
+						}
+						<input type="file" id="screengrab-input" onChange={this.screengrabChange.bind(this)}/>
+
 						<div className="rf-screengrab-detail"> 
 							<span className="rf-button-link from">from</span>
 						  <span><i className="fa fa-long-arrow-right" aria-hidden="true"></i></span>
@@ -48,7 +80,7 @@ class AddRefForm extends Component {
 						<div className="rf-ref-thumb">
 							<img src="assets/img/people/smiley.png" alt="ref image" />
 						</div>
-						<div>
+						<div className="rf-ref-items">
 							<div className="rf-ref-descrip">
 								<span><p><span className="rf-button-link ref-descrip-strong">reference</span>is a...</p></span>
 							</div>
@@ -68,6 +100,8 @@ class AddRefForm extends Component {
 						</div>
 					</div> 
 				</div> 
+				<input className="submit-button" type="submit" value="Submit" />
+			</form>
 			</div> 
 		)
 	}

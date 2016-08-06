@@ -1,3 +1,5 @@
+$base-color-lt: #D3F0F4;
+
 * {
   padding: 0;
   margin: 0;
@@ -7,7 +9,7 @@
 body {
   font-family: sans-serif;
   background-color: #315481;
-  background-image: linear-gradient(to bottom, darkturquoise, paleturquoise  160%);
+  background-image: linear-gradient(to bottom, darkturquoise, $base-color-lt  160%);
   background-attachment: fixed;
 
   position: absolute;

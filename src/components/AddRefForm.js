@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import classNames from 'classnames';
 
 // api
 const characters = ["Lorelai Gilmore","Rory Gilmore","Luke Danes","Lane Kim","Michel Gerard","Emily Gilmore","Richard Gilmore","Sookie St. James","Kirk Gleason","Paris Geller","Miss Patty","Dean Forester","Logan Huntzberger","Jackson Belleville","Taylor Doose","Babette Dell","Mrs. Kim","Zack Van Gerbig","Jess Mariano","Christopher Hayden","Louise Grant","Madeline Lynn","Brian Fuller","Gypsy","Doyle McMaster","Caesar","Andrew","Morey Dell","Grant","Liz Danes","Colin McCrae","Lulu","Finn","Jason Stiles","T.J.","Gil","April Nardini","Tom","Max Medina","Glenn Babble","Tristin Dugray","Hanlin Charleston","Marty","Anna Nardini","Bill","Dave Rygalski","Mitchum Huntzberger","Lindsay Forester","Janet Billings","Drella","Tana Schrick","Nicole Leahy","Lucy","Reverend Archie Skinner","Olivia","A.K.","Brad Langford","Lorelai 'Trix' Gilmore","Rob","Rachel","Bootsy","Kyle","Mrs. O'Malley","Kyon","Bill","Henry Cho","Asher Fleming","Francie Jarvis","Honor Huntzberger","Robert Grimaldi","Rabbi David Barans","Shane","Clara Forester","Raj","Mrs. Cassini","Fred","Robert the Valet","Customer #1","Ed","Bob Merriam","Sherry Tinsdale","Alex Lesman","Rune","Sophie Bloom","Jamie","Mr. Hunter","Davey","Costumer","Harry","Dereck","Customer #2","Jamie","Jimmy","Tobin","Joe Mastoni","Straub Hayden","Mayor Harry Porter","Burt","Beau Belleville","Francine Hayden","Sy","Nick","Simon McLane","T.J.'s Brother","Terrence","Dr. Schultz","Waiter","Floyd Stiles","Customer #1","Anson","Rich Bloomenfeld","Josh","Patel Chandrasekhar","Mrs. Slutsky","Carl","Manny","Chad","Russell Bynes","Meena","Grandpa Huntzberger","Customer","Chad","Marilyn","Customer","Marty (Singer)", "Customer","Helen Thompson","Fred Larson","Customer","Customer #2","Waiter","Western Shirt Man","Young Lorelai","Fencing Instructor","Waiter","Judy Garland","Douglas Swope","Caesar","The Proprietor","Mr. Hunter","Young Christopher","Bill Borden","May","Mae West","Andrew","Carl","Customer #2","Marilyn Monroe","Waiter","John Mattern","Waiter","Bette Davis","Name Calling Woman","Chief Baker","Marjorie Rogers","Gwen Stefani","Iris Medlock","Uma Thurman","Fred Larson Jr.","Lucy","Charlie","Janet Jackson","Jim Hatlestad","Customer #1","Luke's Customer #1","Customer","Waiter","Luke's Customer #2","Friar Lawerence","Dean Forester","Stars Hollow Resident","Chad","Stars Hollow Resident","Terence","Customer", "Work Furlough Gang","Elton John"];
@@ -15,33 +14,54 @@ class AddRefForm extends Component {
 		super();
 		this.state = {
 			currScreengrab: null,
-			currPersonThumb: null,
+			currRefThumb: null,
 		};
 	}
 
-	screengrabChange(e) {
+	componentDidMount() {
+		const screengrabBox = this.screengrabElement.getBoundingClientRect();
+		this.screengrabUploadElement.style.top = screengrabBox.top + screengrabBox.height/2 - 20 + "px";
+		this.screengrabUploadElement.style.left= screengrabBox.left + screengrabBox.width/2 - 30 + "px";
+
+		const refThumbBox = this.refThumbElement.getBoundingClientRect();
+		this.refThumbUploadElement.style.top = refThumbBox.top + refThumbBox.height/2 - 15 + "px";
+		this.refThumbUploadElement.style.left= refThumbBox.left + refThumbBox.width/2 - 40 + "px";
+
+		characters.map( c => {
+			console.log(c.replace(/^\s+|\s+$|\s|\./g, '').toLowerCase());
+		});
+	}
+
+	uploadChange(e) {
+		const id = e.target.id;
 		const file = e.target.files[0];
 		if (file.type.match('image.*')) {
 			let reader = new FileReader();
 			reader.readAsDataURL(file);
 			reader.onload = e => {
-				this.setState({ currScreengrab: e.target.result });
-				this.screengrabElement.src = e.target.result;
+				if (id.includes('ref')) { 
+					this.setState({ currRefThumb: e.target.result });
+					this.refThumbElement.src = e.target.result;
+				} else if (id.includes('screengrab')) {
+					this.setState({ currScreengrab: e.target.result });
+					this.screengrabElement.src = e.target.result;
+				}
 			}
 		}
 	}
 
+	fromChange(e) {
+		console.log(e.target.value);
+		const name = e.target.value.replace(/^\s+|\s+$|\s|\./g, '').toLowerCase();
+		console.log(name);
+	}
+
 
 	render() {
-		const formClasses = classNames({
-      'empty-img' : this.state.currScreengrab === null,
-    });
-
 		return (
 			<div className="add-ref-form-wrapper">
 			<form>
 				<div className="rf-headline-wrapper" >
-	        <p className="rf-ref-marker"><input type="text" placeholder="00:00"/></p>
 	        <div className="rf-person-thumb">
           	<img className="rf-clip-circle" src="assets/img/people/smiley.png" alt="face" ref={c => this.currPersonThum = c}/>
 	        </div>
@@ -53,19 +73,21 @@ class AddRefForm extends Component {
 
 
 				<div className="rf-ref-detail-wrapper">
+					<div className="rf-time">
+						<i className="fa fa-clock-o" aria-hidden="true"></i>
+						<span className="rf-button-link rf-ref-marker"><input type="text" placeholder="00:00" /></span>
+					</div>
 					<div className="rf-screengrab">
-						<img className={formClasses} src="" ref={c => this.screengrabElement = c}/>
+						<img className={this.state.currScreengrab === null ? 'empty-screengrab' : ''} src="" ref={c => this.screengrabElement = c}/>
 						{
 							this.state.currScreengrab === null ? 
-							<label htmlFor="screengrab-input"><i className="fa fa-arrow-circle-up" aria-hidden="true"></i><br/>screengrab</label>
+							<label htmlFor="screengrab-input" ref={c => this.screengrabUploadElement = c}><i className="fa fa-arrow-circle-up" aria-hidden="true"></i><br/>screengrab</label>
 							: ''
 						}
-						<input type="file" id="screengrab-input" onChange={this.screengrabChange.bind(this)}/>
-
-
+						<input type="file" id="screengrab-input" onChange={this.uploadChange.bind(this)}/>
 						<div className="rf-screengrab-detail"> 
 							<span className="rf-button-link from">
-								<select className="rf-from-input">
+								<select className="rf-from-input" onChange={this.fromChange.bind(this)}>
 						  		{characters.map( (c, index) => <option value={c} key={index}> {c} </option> )}
 								</select>
 							</span>
@@ -87,13 +109,19 @@ class AddRefForm extends Component {
 						</div>
 						
 						<div className="rf-image-descrip">
-							<p>image description</p>
+							<textarea placeholder="scene description"/>
 						</div>
 					</div>
 
 					<div className="rf-ref-detail">
 						<div className="rf-ref-thumb">
-							<img src="assets/img/people/smiley.png" alt="ref image" />
+							<img className={this.state.currRefThumb === null ? 'empty-refThumb' : ''} src="" ref={c => this.refThumbElement = c}/>
+							{
+							this.state.currRefThumb === null ? 
+							<label htmlFor="ref-thumb-input" ref={c => this.refThumbUploadElement = c}><i className="fa fa-arrow-circle-up" aria-hidden="true"></i><br/>150 x 150px</label>
+							: ''
+						}
+						<input type="file" id="ref-thumb-input" onChange={this.uploadChange.bind(this)}/>
 						</div>
 						<div className="rf-ref-items">
 							<div className="rf-ref-descrip">

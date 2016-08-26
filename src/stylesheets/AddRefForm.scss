@@ -11,13 +11,7 @@ $highlight: white;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 300;
 
-  .rf-ref-marker {
-    color: $base-color-lt;
-    width: 5.5rem;
-    padding-top: 1rem;
-    font-size: 14pt;
-    text-decoration: none;
-  }
+
   
   .rf-person-thumb {
     display: block;
@@ -27,10 +21,6 @@ $highlight: white;
       border-radius: 50%;
       border: double 8px $base-color-lt;
       margin-top: 2rem;
-
-      &:hover {
-        border: solid 8px $base-color-lt;
-      }
     }
 
     .rf-person-input {
@@ -92,6 +82,28 @@ $highlight: white;
     font-size: 13pt;
   }
 
+  .rf-time {
+    display: inline-block;
+    .fa-clock-o {
+      font-size: 2rem;
+    }
+
+    .rf-ref-marker {
+      display: inline-block;
+      width: 15%;
+      margin-left: 2rem;
+      input {
+        color: #2F2F2F;
+        display: inline-block;
+        font-size: 2rem;
+        text-align: center;
+        width: 100%
+      }
+    }
+  }
+  
+
+
   .rf-screengrab {
     margin-bottom: 2rem;
     
@@ -104,8 +116,6 @@ $highlight: white;
     label {
       text-align: center;
       position: absolute;
-      margin-left: -275px;
-      margin-top: 105px;
 
       i {
         font-size: 5rem;
@@ -134,11 +144,20 @@ $highlight: white;
         margin: 0 1rem;
       }
     }
+
+    .rf-image-descrip {
+      height: 75px;
+    }
   }
 
-  .empty-img {
+  .empty-screengrab {
     width: 500px;
     height: 250px;
+  }
+
+  .empty-refThumb {
+    width: 150px;
+    height: 150px;
   }
         
   .rf-ref-detail {
@@ -146,8 +165,18 @@ $highlight: white;
 
     .rf-ref-thumb {
       img {
+        background-image: linear-gradient(to bottom, darkturquoise, $base-color-lt  160%);
         width: 150px;
-        padding-right: 1.5em;
+        height: 150px;
+        margin-right: 1.5em;
+      }
+
+      label {
+        text-align: center;
+        position: absolute;
+        i {
+          font-size: 3rem;
+        }
       }
     }
     
@@ -224,6 +253,7 @@ textarea {
   color: black;
   border: none;
   width: 100%;
+  height: 100%;
 
   &:focus {
     border-bottom: 1px solid $highlight;

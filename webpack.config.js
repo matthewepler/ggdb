@@ -10,7 +10,7 @@ module.exports = {
 		inline: true,  // hot reloading without webpack status bar
 		port: 1111,    // channge to whatever
 	},
-	devtool: 'source-map',
+	devtool: 'inline-eval-cheap-source-map',
 	module: {
 		preLoaders: [
       {

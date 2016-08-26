@@ -1,12 +1,9 @@
 # TO DO
 * form 
-	-> character smiley face
-			> populate select with list of names (move to firebase later)
-			> style select list
-	-> fix screengrab upload placement
-	-> from, to, location inputs
-	-> image description inputs
-	-> ref image input, refresh
+	-> character image updates when "from" selection is changed.
+		- get all the photos
+		- name them correctly
+		- hook it up
 	-> ref-items inputs
 	-> submit button styling
 	-> submit data verification

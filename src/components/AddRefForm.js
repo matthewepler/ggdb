@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 
 // api
-const characters = ["Lorelai Gilmore","Rory Gilmore","Luke Danes","Lane Kim","Michel Gerard","Emily Gilmore","Richard Gilmore","Sookie St. James","Kirk Gleason","Paris Geller","Miss Patty","Dean Forester","Logan Huntzberger","Jackson Belleville","Taylor Doose","Babette Dell","Mrs. Kim","Zack Van Gerbig","Jess Mariano","Christopher Hayden","Louise Grant","Madeline Lynn","Brian Fuller","Gypsy","Doyle McMaster","Caesar","Andrew","Morey Dell","Grant","Liz Danes","Colin McCrae","Lulu","Finn","Jason Stiles","T.J.","Gil","April Nardini","Tom","Max Medina","Glenn Babble","Tristin Dugray","Hanlin Charleston","Marty","Anna Nardini","Bill","Dave Rygalski","Mitchum Huntzberger","Lindsay Forester","Janet Billings","Drella","Tana Schrick","Nicole Leahy","Lucy","Reverend Archie Skinner","Olivia","A.K.","Brad Langford","Lorelai 'Trix' Gilmore","Rob","Rachel","Bootsy","Kyle","Mrs. O'Malley","Kyon","Bill","Henry Cho","Asher Fleming","Francie Jarvis","Honor Huntzberger","Robert Grimaldi","Rabbi David Barans","Shane","Clara Forester","Raj","Mrs. Cassini","Fred","Robert the Valet","Customer #1","Ed","Bob Merriam","Sherry Tinsdale","Alex Lesman","Rune","Sophie Bloom","Jamie","Mr. Hunter","Davey","Costumer","Harry","Dereck","Customer #2","Jamie","Jimmy","Tobin","Joe Mastoni","Straub Hayden","Mayor Harry Porter","Burt","Beau Belleville","Francine Hayden","Sy","Nick","Simon McLane","T.J.'s Brother","Terrence","Dr. Schultz","Waiter","Floyd Stiles","Customer #1","Anson","Rich Bloomenfeld","Josh","Patel Chandrasekhar","Mrs. Slutsky","Carl","Manny","Chad","Russell Bynes","Meena","Grandpa Huntzberger","Customer","Chad","Marilyn","Customer","Marty (Singer)", "Customer","Helen Thompson","Fred Larson","Customer","Customer #2","Waiter","Western Shirt Man","Young Lorelai","Fencing Instructor","Waiter","Judy Garland","Douglas Swope","Caesar","The Proprietor","Mr. Hunter","Young Christopher","Bill Borden","May","Mae West","Andrew","Carl","Customer #2","Marilyn Monroe","Waiter","John Mattern","Waiter","Bette Davis","Name Calling Woman","Chief Baker","Marjorie Rogers","Gwen Stefani","Iris Medlock","Uma Thurman","Fred Larson Jr.","Lucy","Charlie","Janet Jackson","Jim Hatlestad","Customer #1","Luke's Customer #1","Customer","Waiter","Luke's Customer #2","Friar Lawerence","Dean Forester","Stars Hollow Resident","Chad","Stars Hollow Resident","Terence","Customer", "Work Furlough Gang","Elton John", "other"];
-const locations = ["Lorelai's House", "The Gilmore House", "Town Square", "Chilton", "Luke's Diner", "Kim's Antiques", "Miss Patty's School of Ballet", "Independence Inn", "Doose's Market", "Dragonfly Inn", "Weston's Bakery", "Stars Hollow High School", "Stars Hollow History Museum", "Yale", "other"];
+const characters = ["Lorelai Gilmore","Rory Gilmore","Luke Danes","Lane Kim","Michel Gerard","Emily Gilmore","Richard Gilmore","Sookie St. James","Kirk Gleason","Paris Geller","Miss Patty","Dean Forester","Logan Huntzberger","Jackson Belleville","Taylor Doose","Babette Dell","Mrs. Kim","Zack Van Gerbig","Jess Mariano","Christopher Hayden","Louise Grant","Madeline Lynn","Brian Fuller","Gypsy","Doyle McMaster","Caesar","Andrew","Morey Dell","Grant","Liz Danes","Colin McCrae","Lulu","Finn","Jason Stiles","T.J.","Gil","April Nardini","Tom","Max Medina","Glenn Babble","Tristin Dugray","Hanlin Charleston","Marty","Anna Nardini","Dave Rygalski","Mitchum Huntzberger","Lindsay Forester","Bill", "Janet Billings","Drella","Tana Schrick","Nicole Leahy","Lucy","Reverend Archie Skinner","Olivia","A.K.","Brad Langford","Lorelai 'Trix' Gilmore","Rob","Rachel","Bootsy","Kyle","Mrs. O'Malley","Kyon","Henry Cho","Asher Fleming","Francie Jarvis","Honor Huntzberger","Robert Grimaldi","Rabbi David Barans","Shane","Clara Forester","Raj","Mrs. Cassini","Fred","Robert the Valet","Customer","Ed","Bob Merriam","Sherry Tinsdale","Alex Lesman","Rune","Sophie Bloom","Davey","Harry","Dereck","Jamie","Jimmy","Tobin","Joe Mastoni","Straub Hayden","Mayor Harry Porter","Burt","Beau Belleville","Francine Hayden","Sy","Nick","Simon McLane","T.J.'s Brother","Dr. Schultz","Floyd Stiles","Anson","Rich Bloomenfeld","Josh","Patel Chandrasekhar","Mrs. Slutsky","Manny","Russell Bynes","Meena","Grandpa Huntzberger","Marilyn","Marty (Singer)","Helen Thompson","Fred Larson","Western Shirt Man","Young Lorelai","Fencing Instructor","Judy Garland","Douglas Swope","The Proprietor","Mr. Hunter","Young Christopher","Bill Borden","May","Mae West","Carl","Marilyn Monroe","John Mattern","Bette Davis","Name Calling Woman","Chief Baker","Marjorie Rogers","Gwen Stefani","Iris Medlock","Uma Thurman","Fred Larson Jr.","Charlie","Janet Jackson","Jim Hatlestad","Waiter","Friar Lawerence","Chad","Stars Hollow Resident","Terence","Work Furlough Gang","Elton John", "other"].sort();
+const locations = ["Lorelai's House", "The Gilmore House", "Town Square", "Chilton", "Luke's Diner", "Kim's Antiques", "Miss Patty's School of Ballet", "Independence Inn", "Doose's Market", "Dragonfly Inn", "Weston's Bakery", "Stars Hollow High School", "Stars Hollow History Museum", "Yale", "other"].sort();
+const refCategories = ["TV", "Music", "Film", "Literature", "Sports", "Institution", "Person", "Comedy/Comic", "History", "Brand", "Theatre", "Fashion", "News", "Science", "Religion", "Geography/Place"].sort();
 
 // stylesheets
 import '../stylesheets/AddRefForm.scss';
@@ -80,23 +81,37 @@ class AddRefForm extends Component {
 						<span className="rf-button-link rf-ref-marker"><input type="text" placeholder="00:00" /></span>
 					</div>
 					<div className="rf-screengrab">
-						<img className={this.state.currScreengrab === null ? 'empty-screengrab' : ''} src="" ref={c => this.screengrabElement = c}/>
-						{
-							this.state.currScreengrab === null ? 
-							<label htmlFor="screengrab-input" ref={c => this.screengrabUploadElement = c}><i className="fa fa-arrow-circle-up" aria-hidden="true"></i><br/>screengrab</label>
-							: ''
-						}
-						<input type="file" id="screengrab-input" onChange={this.uploadChange.bind(this)}/>
+						<div className="rf-screengrab-input">
+							<img className={this.state.currScreengrab === null ? 'empty-screengrab' : ''} src="" ref={c => this.screengrabElement = c}/>
+							{
+								this.state.currScreengrab === null ? 
+								<label htmlFor="screengrab-input" ref={c => this.screengrabUploadElement = c}><i className="fa fa-arrow-circle-up" aria-hidden="true"></i><br/>screengrab</label>
+								: ''
+							}
+							<input type="file" id="screengrab-input" onChange={this.uploadChange.bind(this)}/>
+						</div>
 						<div className="rf-screengrab-detail"> 
 							<span className="rf-button-link from">
-								<select className="rf-from-input" onChange={this.fromChange.bind(this)}>
-						  		{characters.map( (c, index) => <option value={c} key={index}> {c} </option> )}
+								<select className="rf-from-input" onChange={this.fromChange.bind(this)} >
+						  		{characters.map( (c, index) => {
+						  			if (c === "Rory Gilmore") { 
+						  					return <option value={c} key={index} selected> {c} </option> 
+						  				} else {
+						  					return <option value={c} key={index}> {c} </option> 
+						  				}
+						  			})}
 								</select>
 							</span>
 						  <span><i className="fa fa-long-arrow-right" aria-hidden="true"></i></span>
 							<span className="rf-button-link to">
 								<select className="rf-to-input">
-						  		{characters.map( (c, index) => <option value={c} key={index}> {c} </option> )}
+						  		{characters.map( (c, index) => {
+						  			if (c === "Lorelai Gilmore") { 
+					  					return <option value={c} key={index} selected> {c} </option> 
+					  				} else {
+					  					return <option value={c} key={index}> {c} </option> 
+					  				}
+						  		})}
 								</select>
 							</span> 
 							<br/>
@@ -104,7 +119,13 @@ class AddRefForm extends Component {
 								<i className="fa fa-at" aria-hidden="true"> </i>
 								<span className="rf-button-link location" >
 									<select className="rf-location-input">
-										{locations.map( (l, index) => <option value={l} key={index}> {l} </option> )}
+										{locations.map( (l, index) => {
+											if (l === "Lorelai's House") { 
+							  					return <option value={l} key={index} selected> {l} </option> 
+							  				} else {
+							  					return <option value={l} key={index}> {l} </option> 
+							  				}
+										})}
 									</select>
 								</span>
 							</div>
@@ -127,10 +148,12 @@ class AddRefForm extends Component {
 						</div>
 						<div className="rf-ref-items">
 							<div className="rf-ref-descrip">
-								<span><p><span className="rf-button-link ref-descrip-strong">reference</span>is a...</p></span>
+								<input className="rf-ref-descrip-refbox" type="text" placeholder="Person, place, thing" />
+								<input className="rf-ref-descrip-isa" type="text" placeholder=" is a ..." />
 							</div>
 							<div className="rf-ref-tags">
 								<ul>
+
 									<li className="rf-button-link">category</li>
 									<li className="rf-button-link">year</li> 
 									<li><i className="rf-button-link fa fa-wikipedia-w" aria-hidden="true"></i></li>

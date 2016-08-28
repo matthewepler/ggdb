@@ -1,7 +1,6 @@
 # TO DO
 * form
-	-> tightup up spacing between screengrab box and select options
-	-> add text inputs for other tags
+	-> add text inputs for other tags (left off at 'category' and 'year')
 	-> style submit button
 	-> submit data validation
 

@@ -122,6 +122,10 @@ $highlight: white;
       }
     }
 
+    .rf-screengrab-input {
+      margin-bottom: -6rem;
+    }
+
     .rf-screengrab-detail {
       color: white;
       font-size: 2rem;
@@ -147,6 +151,9 @@ $highlight: white;
 
     .rf-image-descrip {
       height: 75px;
+      textarea {
+        padding: 5px;
+      }
     }
   }
 
@@ -191,13 +198,36 @@ $highlight: white;
     }
     
     .rf-ref-items {
+      width: 100%;
+
       .rf-ref-descrip {
+        display: block;
+        width: 100%;
+
         & > p {
           font-size: 2rem;
         }
         .rf-ref-descrip-strong {
           font-weight: 600;
           margin-right: 0.75rem;
+        }
+
+        .rf-ref-descrip-reference:before {
+          content: ' ';
+        }
+
+        input {
+          border-bottom: 2px solid white;
+          color: black;
+          padding: 5px;
+        }
+
+        .rf-ref-descrip-refbox {
+          display: block;
+        }
+
+        .rf-ref-descrip-isa {
+          display: block;
         }
       }
 
@@ -211,10 +241,11 @@ $highlight: white;
 .rf-button-link {
   border-radius: 10px;
   color: #2F2F2F;
-  background-color: $base-color-lt;
+  background-color: transparent;
   padding: 0.5rem;
   padding: 0.5rem 1rem;
   margin: 1rem 0;
+  border: 2px solid white;
 }
 
 
@@ -255,14 +286,24 @@ input[type=text] {
 
 textarea {
   background-color: transparent;
+  border-bottom: 2px solid white;
+  border-left: transparent;
+  border-right: transparent;
+  border-top: transparent;
   color: black;
-  border: none;
-  width: 100%;
   height: 100%;
+  resize: none;
+  width: 100%;
 
   &:focus {
-    border-bottom: 1px solid $highlight;
+    // border-bottom: 1px solid $highlight;
     outline: none;
+  }
+}
+
+.rf-ref-quote {
+  textarea {
+    border: none;
   }
 }
 

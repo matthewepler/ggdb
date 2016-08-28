@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 
 // api
-const characters = ["Lorelai Gilmore","Rory Gilmore","Luke Danes","Lane Kim","Michel Gerard","Emily Gilmore","Richard Gilmore","Sookie St. James","Kirk Gleason","Paris Geller","Miss Patty","Dean Forester","Logan Huntzberger","Jackson Belleville","Taylor Doose","Babette Dell","Mrs. Kim","Zack Van Gerbig","Jess Mariano","Christopher Hayden","Louise Grant","Madeline Lynn","Brian Fuller","Gypsy","Doyle McMaster","Caesar","Andrew","Morey Dell","Grant","Liz Danes","Colin McCrae","Lulu","Finn","Jason Stiles","T.J.","Gil","April Nardini","Tom","Max Medina","Glenn Babble","Tristin Dugray","Hanlin Charleston","Marty","Anna Nardini","Bill","Dave Rygalski","Mitchum Huntzberger","Lindsay Forester","Janet Billings","Drella","Tana Schrick","Nicole Leahy","Lucy","Reverend Archie Skinner","Olivia","A.K.","Brad Langford","Lorelai 'Trix' Gilmore","Rob","Rachel","Bootsy","Kyle","Mrs. O'Malley","Kyon","Bill","Henry Cho","Asher Fleming","Francie Jarvis","Honor Huntzberger","Robert Grimaldi","Rabbi David Barans","Shane","Clara Forester","Raj","Mrs. Cassini","Fred","Robert the Valet","Customer #1","Ed","Bob Merriam","Sherry Tinsdale","Alex Lesman","Rune","Sophie Bloom","Jamie","Mr. Hunter","Davey","Costumer","Harry","Dereck","Customer #2","Jamie","Jimmy","Tobin","Joe Mastoni","Straub Hayden","Mayor Harry Porter","Burt","Beau Belleville","Francine Hayden","Sy","Nick","Simon McLane","T.J.'s Brother","Terrence","Dr. Schultz","Waiter","Floyd Stiles","Customer #1","Anson","Rich Bloomenfeld","Josh","Patel Chandrasekhar","Mrs. Slutsky","Carl","Manny","Chad","Russell Bynes","Meena","Grandpa Huntzberger","Customer","Chad","Marilyn","Customer","Marty (Singer)", "Customer","Helen Thompson","Fred Larson","Customer","Customer #2","Waiter","Western Shirt Man","Young Lorelai","Fencing Instructor","Waiter","Judy Garland","Douglas Swope","Caesar","The Proprietor","Mr. Hunter","Young Christopher","Bill Borden","May","Mae West","Andrew","Carl","Customer #2","Marilyn Monroe","Waiter","John Mattern","Waiter","Bette Davis","Name Calling Woman","Chief Baker","Marjorie Rogers","Gwen Stefani","Iris Medlock","Uma Thurman","Fred Larson Jr.","Lucy","Charlie","Janet Jackson","Jim Hatlestad","Customer #1","Luke's Customer #1","Customer","Waiter","Luke's Customer #2","Friar Lawerence","Dean Forester","Stars Hollow Resident","Chad","Stars Hollow Resident","Terence","Customer", "Work Furlough Gang","Elton John"];
-const locations = ["Lorelai's House", "The Gilmore House", "Town Square", "Chilton", "Luke's Diner", "Kim's Antiques", "Miss Patty's School of Ballet", "Independence Inn", "Doose's Market", "Dragonfly Inn", "Weston's Bakery", "Stars Hollow High School", "Stars Hollow History Museum", "Yale"];
+const characters = ["Lorelai Gilmore","Rory Gilmore","Luke Danes","Lane Kim","Michel Gerard","Emily Gilmore","Richard Gilmore","Sookie St. James","Kirk Gleason","Paris Geller","Miss Patty","Dean Forester","Logan Huntzberger","Jackson Belleville","Taylor Doose","Babette Dell","Mrs. Kim","Zack Van Gerbig","Jess Mariano","Christopher Hayden","Louise Grant","Madeline Lynn","Brian Fuller","Gypsy","Doyle McMaster","Caesar","Andrew","Morey Dell","Grant","Liz Danes","Colin McCrae","Lulu","Finn","Jason Stiles","T.J.","Gil","April Nardini","Tom","Max Medina","Glenn Babble","Tristin Dugray","Hanlin Charleston","Marty","Anna Nardini","Bill","Dave Rygalski","Mitchum Huntzberger","Lindsay Forester","Janet Billings","Drella","Tana Schrick","Nicole Leahy","Lucy","Reverend Archie Skinner","Olivia","A.K.","Brad Langford","Lorelai 'Trix' Gilmore","Rob","Rachel","Bootsy","Kyle","Mrs. O'Malley","Kyon","Bill","Henry Cho","Asher Fleming","Francie Jarvis","Honor Huntzberger","Robert Grimaldi","Rabbi David Barans","Shane","Clara Forester","Raj","Mrs. Cassini","Fred","Robert the Valet","Customer #1","Ed","Bob Merriam","Sherry Tinsdale","Alex Lesman","Rune","Sophie Bloom","Jamie","Mr. Hunter","Davey","Costumer","Harry","Dereck","Customer #2","Jamie","Jimmy","Tobin","Joe Mastoni","Straub Hayden","Mayor Harry Porter","Burt","Beau Belleville","Francine Hayden","Sy","Nick","Simon McLane","T.J.'s Brother","Terrence","Dr. Schultz","Waiter","Floyd Stiles","Customer #1","Anson","Rich Bloomenfeld","Josh","Patel Chandrasekhar","Mrs. Slutsky","Carl","Manny","Chad","Russell Bynes","Meena","Grandpa Huntzberger","Customer","Chad","Marilyn","Customer","Marty (Singer)", "Customer","Helen Thompson","Fred Larson","Customer","Customer #2","Waiter","Western Shirt Man","Young Lorelai","Fencing Instructor","Waiter","Judy Garland","Douglas Swope","Caesar","The Proprietor","Mr. Hunter","Young Christopher","Bill Borden","May","Mae West","Andrew","Carl","Customer #2","Marilyn Monroe","Waiter","John Mattern","Waiter","Bette Davis","Name Calling Woman","Chief Baker","Marjorie Rogers","Gwen Stefani","Iris Medlock","Uma Thurman","Fred Larson Jr.","Lucy","Charlie","Janet Jackson","Jim Hatlestad","Customer #1","Luke's Customer #1","Customer","Waiter","Luke's Customer #2","Friar Lawerence","Dean Forester","Stars Hollow Resident","Chad","Stars Hollow Resident","Terence","Customer", "Work Furlough Gang","Elton John", "other"];
+const locations = ["Lorelai's House", "The Gilmore House", "Town Square", "Chilton", "Luke's Diner", "Kim's Antiques", "Miss Patty's School of Ballet", "Independence Inn", "Doose's Market", "Dragonfly Inn", "Weston's Bakery", "Stars Hollow High School", "Stars Hollow History Museum", "Yale", "other"];
 
 // stylesheets
 import '../stylesheets/AddRefForm.scss';
@@ -20,16 +20,12 @@ class AddRefForm extends Component {
 
 	componentDidMount() {
 		const screengrabBox = this.screengrabElement.getBoundingClientRect();
-		this.screengrabUploadElement.style.top = screengrabBox.top + screengrabBox.height/2 - 20 + "px";
-		this.screengrabUploadElement.style.left= screengrabBox.left + screengrabBox.width/2 - 30 + "px";
-
+		this.screengrabUploadElement.style.top = ((screengrabBox.height/2) * -1) - 30 + "px";
+		this.screengrabUploadElement.style.left= (screengrabBox.width/2) - 35 + "px";
+		
 		const refThumbBox = this.refThumbElement.getBoundingClientRect();
-		this.refThumbUploadElement.style.top = refThumbBox.top + refThumbBox.height/2 - 15 + "px";
-		this.refThumbUploadElement.style.left= refThumbBox.left + refThumbBox.width/2 - 40 + "px";
-
-		characters.map( c => {
-			console.log(c.replace(/^\s+|\s+$|\s|\./g, '').toLowerCase());
-		});
+		this.refThumbUploadElement.style.top = ((refThumbBox.height/2) * -1) - 25 + "px";
+		this.refThumbUploadElement.style.left= (refThumbBox.width/2) - 85 + "px";
 	}
 
 	uploadChange(e) {
@@ -54,6 +50,12 @@ class AddRefForm extends Component {
 		console.log(e.target.value);
 		const name = e.target.value.replace(/^\s+|\s+$|\s|\./g, '').toLowerCase();
 		console.log(name);
+		console.log(this.currPersonThumb);
+
+
+		// check filenames for match
+		// set ref URL for 'this.currPersonThum'
+		// if not match, keep smiley face
 	}
 
 
@@ -63,7 +65,7 @@ class AddRefForm extends Component {
 			<form>
 				<div className="rf-headline-wrapper" >
 	        <div className="rf-person-thumb">
-          	<img className="rf-clip-circle" src="assets/img/people/smiley.png" alt="face" ref={c => this.currPersonThum = c}/>
+          	<img className="rf-clip-circle" src="assets/img/people/smiley.png" alt="face" ref={c => this.currPersonThumb = c}/>
 	        </div>
 	        <div className="rf-quote-box">
 	        	<i className="rf-left-arrow fa fa-caret-left" aria-hidden="true"></i>
@@ -117,11 +119,11 @@ class AddRefForm extends Component {
 						<div className="rf-ref-thumb">
 							<img className={this.state.currRefThumb === null ? 'empty-refThumb' : ''} src="" ref={c => this.refThumbElement = c}/>
 							{
-							this.state.currRefThumb === null ? 
-							<label htmlFor="ref-thumb-input" ref={c => this.refThumbUploadElement = c}><i className="fa fa-arrow-circle-up" aria-hidden="true"></i><br/>150 x 150px</label>
-							: ''
-						}
-						<input type="file" id="ref-thumb-input" onChange={this.uploadChange.bind(this)}/>
+								this.state.currRefThumb === null ? 
+								<label htmlFor="ref-thumb-input" ref={c => this.refThumbUploadElement = c}><i className="fa fa-arrow-circle-up" aria-hidden="true"></i><br/>150 x 150px</label>
+								: ''
+							}
+							<input type="file" id="ref-thumb-input" onChange={this.uploadChange.bind(this)}/>
 						</div>
 						<div className="rf-ref-items">
 							<div className="rf-ref-descrip">

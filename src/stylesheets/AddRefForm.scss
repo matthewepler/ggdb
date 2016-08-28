@@ -115,7 +115,7 @@ $highlight: white;
 
     label {
       text-align: center;
-      position: absolute;
+      position: relative;
 
       i {
         font-size: 5rem;
@@ -164,6 +164,7 @@ $highlight: white;
     display: flex;
 
     .rf-ref-thumb {
+      display: block;
       img {
         background-image: linear-gradient(to bottom, darkturquoise, $base-color-lt  160%);
         width: 150px;
@@ -172,10 +173,14 @@ $highlight: white;
       }
 
       label {
+        display: block;
+        position: relative;
         text-align: center;
-        position: absolute;
         i {
+          display: block;
           font-size: 3rem;
+          margin-bottom: -2rem;
+          position: relative;
         }
       }
     }

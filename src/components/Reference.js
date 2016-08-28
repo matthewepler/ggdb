@@ -33,7 +33,7 @@ class Reference extends Component {
       <div className="headline" onClick={this.handleClick.bind(this)}>
         <p className="ref-marker">{this.props.reference.marker}</p>
         <div className="person-thumb">
-          <img className="clip-circle" src="assets/img/people/rory.jpg" alt="RuPaul" />
+          <img className="clip-circle" src="assets/img/people/rorygilmore.png" alt="RuPaul" />
         </div>
         <i className="left-arrow fa fa-caret-left" aria-hidden="true"></i>
         <span className={panelClasses}>{lineSplit[0]}<strong>{this.props.reference.ref}</strong>{lineSplit[1]}</span>

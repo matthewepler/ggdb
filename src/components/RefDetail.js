@@ -83,7 +83,7 @@ class RefDetail extends Component {
 			<div className="ref-detail-wrapper">
 				
 				<div className="screengrab">
-					<img src={`assets/img/screens/${this.props.reference.screenshot}`} alt="screengrab" />
+					<img src={"assets/img/screens/rupaul.jpg"} alt="screengrab" />
 					
 					<div className="screengrab-detail"> 
 				{/* dev note: 

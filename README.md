@@ -1,17 +1,18 @@
 # TO DO
-* form 
+* form
+	-> tightup up spacing between screengrab box and select options
+	-> add text inputs for other tags
+	-> style submit button
+	-> submit data validation
+
+	-> hookup firebase
+	-> add character data objects (define)
 	-> character image updates when "from" selection is changed.
-		- get all the photos
-		- name them correctly
 		- hook it up
-	-> ref-items inputs
-	-> submit button styling
-	-> submit data verification
+			* console log a full JSON output is what you want to send to Firebase
+	
 
 * re-instate propTypes
-
-* firebase
-	-> list of character names and locations
 
 * dataviz
 

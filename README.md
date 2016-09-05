@@ -1,20 +1,15 @@
 # TO DO
 * form
-	-> add text inputs for other tags (left off at 'category' and 'year')
-	-> style submit button
-	-> submit data validation
-		* check React Form and Form Events documentation
-
+	-> finish making ref objects for each input, check console output
+	-> send data through scrip for validation
 	-> hookup firebase
-	-> add character data objects (define)
-	-> character image updates when "from" selection is changed.
-		- hook it up
-			* console log a full JSON output is what you want to send to Firebase
-	
+	-> add 'fs' and check for the matching image in 'fromChange' function
 
 * re-instate propTypes
 
 * dataviz
+
+* accounts and permissions
 
 * links for each entry
 
@@ -22,7 +17,6 @@
 
 * send for review to at least 3 designers and 5 fans
 
-* what to do if they're filling out a location and it doesn't exist yet...
 
 # NICE TO HAVE'S
 * Wiki, image, video preview popups before click-through to link

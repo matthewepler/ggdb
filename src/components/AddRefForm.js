@@ -50,9 +50,7 @@ class AddRefForm extends Component {
 	fromChange(e) {
 		console.log(e.target.value);
 		const name = e.target.value.replace(/^\s+|\s+$|\s|\./g, '').toLowerCase();
-		console.log(name);
-		console.log(this.currPersonThumb);
-
+		this.currPersonThumb.src = "assets/img/people/" + name + ".png";
 
 		// check filenames for match
 		// set ref URL for 'this.currPersonThum'
@@ -62,6 +60,10 @@ class AddRefForm extends Component {
 	formSubmit(e) {
 		e.preventDefault();
 		console.log(this.timecode.value);
+		console.log(this.screengrab.value);
+		console.log(this.from.value);
+		console.log(this.to.value);
+		console.log(this.location.value);
 	}
 
 
@@ -79,60 +81,67 @@ class AddRefForm extends Component {
       		</div>
 	      </div> 
 
-
 				<div className="rf-ref-detail-wrapper">
-					<div className="rf-time">
-						<i className="fa fa-clock-o" aria-hidden="true"></i>
-						<span className="rf-button-link rf-ref-marker"><input type="text" placeholder="00:00" ref={c => this.timecode = c}/></span>
-					</div>
 					<div className="rf-screengrab">
 						<div className="rf-screengrab-input">
-							<img className={this.state.currScreengrab === null ? 'empty-screengrab' : ''} src="" ref={c => this.screengrabElement = c}/>
+							<img className={this.state.currScreengrab === null ? 'empty-screengrab' : 'user-screengrab'} src="" ref={c => this.screengrabElement = c}/>
 							{
 								this.state.currScreengrab === null ? 
 								<label htmlFor="screengrab-input" ref={c => this.screengrabUploadElement = c}><i className="fa fa-arrow-circle-up" aria-hidden="true"></i><br/>screengrab</label>
 								: ''
 							}
-							<input type="file" id="screengrab-input" onChange={this.uploadChange.bind(this)}/>
+							<input type="file" id="screengrab-input" ref={c => this.screengrab = c} onChange={this.uploadChange.bind(this)}/>
+						</div>
+						<div className="rf-time">
+							<i className="fa fa-clock-o" aria-hidden="true"></i>
+							<span className="rf-button-link rf-ref-marker"><input type="text" placeholder="00:00" ref={c => this.timecode = c}/></span>
 						</div>
 						<div className="rf-screengrab-detail"> 
-							<span className="rf-button-link from">
-								<select className="rf-from-input" onChange={this.fromChange.bind(this)} >
-						  		{characters.map( (c, index) => {
-						  			if (c === "Rory Gilmore") { 
+							<div className="select-wrap">
+								<span className="rf-button-link from">
+									<select className="rf-from-input" ref={c => this.from = c} onChange={this.fromChange.bind(this)} >
+							  		{characters.map( (c, index) => {
+							  			
+							  					return <option value={c} key={index}> {c} </option> 
+							  			
+							  			})}
+									</select>
+								</span>
+							</div>
+
+						  	<span><i className="fa fa-long-arrow-right" aria-hidden="true"></i></span>
+							
+							<div className="select-wrap">
+								<span className="rf-button-link to">
+									<select className="rf-to-input" ref={c => this.to = c}>
+							  		{characters.map( (c, index) => {
+							  			if (c === "Lorelai Gilmore") { 
 						  					return <option value={c} key={index} selected> {c} </option> 
 						  				} else {
 						  					return <option value={c} key={index}> {c} </option> 
 						  				}
-						  			})}
-								</select>
-							</span>
-						  <span><i className="fa fa-long-arrow-right" aria-hidden="true"></i></span>
-							<span className="rf-button-link to">
-								<select className="rf-to-input">
-						  		{characters.map( (c, index) => {
-						  			if (c === "Lorelai Gilmore") { 
-					  					return <option value={c} key={index} selected> {c} </option> 
-					  				} else {
-					  					return <option value={c} key={index}> {c} </option> 
-					  				}
-						  		})}
-								</select>
-							</span> 
+							  		})}
+									</select>
+								</span> 
+							</div>
+
 							<br/>
+
 							<div className="rf-location">
 								<i className="fa fa-at" aria-hidden="true"> </i>
-								<span className="rf-button-link location" >
-									<select className="rf-location-input">
-										{locations.map( (l, index) => {
-											if (l === "Lorelai's House") { 
-							  					return <option value={l} key={index} selected> {l} </option> 
-							  				} else {
-							  					return <option value={l} key={index}> {l} </option> 
-							  				}
-										})}
-									</select>
-								</span>
+								<div className="select-wrap">
+									<span className="rf-button-link location" >
+										<select className="rf-location-input" ref={c => this.location = c}>
+											{locations.map( (l, index) => {
+												if (l === "Lorelai's House") { 
+								  					return <option value={l} key={index} selected> {l} </option> 
+								  				} else {
+								  					return <option value={l} key={index}> {l} </option> 
+								  				}
+											})}
+										</select>
+									</span>
+								</div>
 							</div>
 						</div>
 						
@@ -160,11 +169,13 @@ class AddRefForm extends Component {
 								<ul>
 
 									<li className="rf-button-link rf-button-select">
-										<select>
-											{refCategories.map( (rc, index) => {
-												return <option value={rc} key={index}> {rc} </option>
-											})}
-										</select>
+										<div className="select-wrap">
+											<select>
+												{refCategories.map( (rc, index) => {
+													return <option value={rc} key={index}> {rc} </option>
+												})}
+											</select>
+										</div>
 									</li>
 									<li className=""><input className="rf-ref-tags-year" type="text" placeholder="year" /></li> 
 									

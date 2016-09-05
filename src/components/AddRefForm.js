@@ -59,11 +59,16 @@ class AddRefForm extends Component {
 		// if not match, keep smiley face
 	}
 
+	formSubmit(e) {
+		e.preventDefault();
+		console.log(this.timecode.value);
+	}
+
 
 	render() {
 		return (
 			<div className="add-ref-form-wrapper">
-			<form>
+			<form onSubmit={this.formSubmit.bind(this)}>
 				<div className="rf-headline-wrapper" >
 	        <div className="rf-person-thumb">
           	<img className="rf-clip-circle" src="assets/img/people/smiley.png" alt="face" ref={c => this.currPersonThumb = c}/>
@@ -78,7 +83,7 @@ class AddRefForm extends Component {
 				<div className="rf-ref-detail-wrapper">
 					<div className="rf-time">
 						<i className="fa fa-clock-o" aria-hidden="true"></i>
-						<span className="rf-button-link rf-ref-marker"><input type="text" placeholder="00:00" /></span>
+						<span className="rf-button-link rf-ref-marker"><input type="text" placeholder="00:00" ref={c => this.timecode = c}/></span>
 					</div>
 					<div className="rf-screengrab">
 						<div className="rf-screengrab-input">
@@ -148,27 +153,45 @@ class AddRefForm extends Component {
 						</div>
 						<div className="rf-ref-items">
 							<div className="rf-ref-descrip">
-								<input className="rf-ref-descrip-refbox" type="text" placeholder="Person, place, thing" />
-								<input className="rf-ref-descrip-isa" type="text" placeholder=" is a ..." />
+								<input className="rf-ref-descrip-refbox" type="text" placeholder="Person, place, thing (RuPaul)" />
+								<input className="rf-ref-descrip-isa" type="text" placeholder=" is a ... (drag performer)" />
 							</div>
 							<div className="rf-ref-tags">
 								<ul>
 
-									<li className="rf-button-link">category</li>
-									<li className="rf-button-link">year</li> 
-									<li><i className="rf-button-link fa fa-wikipedia-w" aria-hidden="true"></i></li>
-									<li><i className="rf-button-link fa fa-camera" aria-hidden="true"></i></li>
-									<li><i className="rf-button-link fa fa-video-camera" aria-hidden="true"></i></li>
+									<li className="rf-button-link rf-button-select">
+										<select>
+											{refCategories.map( (rc, index) => {
+												return <option value={rc} key={index}> {rc} </option>
+											})}
+										</select>
+									</li>
+									<li className=""><input className="rf-ref-tags-year" type="text" placeholder="year" /></li> 
+									
+									<li className="rf-ref-tags-link">
+										<i className="fa fa-wikipedia-w" aria-hidden="true"></i>
+										<input className="rf-ref-tags-media" type="text" placeholder="wikipedia link" />
+									</li>
+									
+									<li className="rf-ref-tags-link">
+										<i className="fa fa-camera" aria-hidden="true"></i>
+										<input className="rf-ref-tags-media" type="text" placeholder="google image search results link" />
+									</li>
+
+									<li className="rf-ref-tags-link">
+										<i className="fa fa-video-camera" aria-hidden="true"></i>
+										<input className="rf-ref-tags-media" type="text" placeholder="video link" />
+									</li>
 								</ul>
 
 								<div className="detail-notes">
-									notes
+									<textarea placeholder="reference notes"/>
 								</div> 	
 							</div>
 						</div>
 					</div> 
+					<input className="submit-button" type="submit" value="Submit"/>
 				</div> 
-				<input className="submit-button" type="submit" value="Submit" />
 			</form>
 			</div> 
 		)

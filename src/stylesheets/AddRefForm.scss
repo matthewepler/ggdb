@@ -234,6 +234,40 @@ $highlight: white;
       .rf-image-descrip {
         margin-bottom: 3rem;
       }
+
+      .rf-ref-tags {
+        ul li {
+          width: 170px;
+
+          input[type="text"] {
+            border-bottom: 2px solid white;
+            color: black;
+            padding: 5px;
+            width: 100px;
+          }
+        }
+
+        p {
+          float: right;
+        }
+
+        li.rf-ref-tags-link {
+          display: flex;
+          align-items: center;
+          padding-top: 15px;
+          width: 100%;
+
+          input[type="text"] {
+            width: 100%;
+          }
+        }
+
+        .detail-notes {
+          height: 90px;
+          padding-top: 15px;
+          margin-left: 15px;
+        } 
+      }
     }
   }
 }
@@ -323,4 +357,23 @@ select {
   &:focus {
     outline: none;
   }
+}
+
+input[type="submit"] {
+  margin-top: 25px;
+  height: 50px;
+  background-color: darkturquoise;
+  border: 3px solid white;
+  border-radius: 10px;
+  color: white;
+
+  &:hover {
+    background-color: white;
+    color: darkturquoise;
+  }
+
+  &:active {
+    border: 3px solid darkturquoise;
+  }
+
 }

@@ -76,7 +76,7 @@ $highlight: white;
   display: flex;
   flex-direction: column;
   max-width: 88%;
-  padding-left: 18.5rem;
+  padding-left: 13rem;
   font-family: 'Source Sans Pro', sans-serif;
 
   p {
@@ -85,6 +85,8 @@ $highlight: white;
 
   .rf-time {
     display: inline-block;
+    margin-top: 2rem;
+
     .fa-clock-o {
       font-size: 2rem;
     }
@@ -107,9 +109,8 @@ $highlight: white;
     margin-bottom: 8rem;
     
     img {
-      max-width: 595px;
-      max-height: 400px;
-      margin-top: 1rem;
+      max-height: 432px;
+      margin-top: 2rem;
       margin-bottom: 2rem;
       background-image: linear-gradient(to bottom, darkturquoise, $base-color-lt  160%);
     }
@@ -124,11 +125,19 @@ $highlight: white;
     }
 
     .rf-screengrab-input {
+      height: 450px; 
+
       input {
         display: none;
         position: absolute;
         top: 0;
       }
+
+      label: {
+        top: -262px;
+        left: 285px;
+      }
+
     }
 
     .rf-screengrab-detail {
@@ -164,8 +173,8 @@ $highlight: white;
   }
 
   .empty-screengrab {
-    width: 585px;
-    height: 400px;
+    width: 640px;
+    height: 432px;
   }
 
   .empty-refThumb {
@@ -367,7 +376,7 @@ select {
 }
 
 input[type="submit"] {
-  margin-top: 25px;
+  margin-top: 50px;
   height: 50px;
   background-color: darkturquoise;
   border: 3px solid white;

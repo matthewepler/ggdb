@@ -48,7 +48,6 @@ class AddRefForm extends Component {
 	}
 
 	fromChange(e) {
-		console.log(e.target.value);
 		const name = e.target.value.replace(/^\s+|\s+$|\s|\./g, '').toLowerCase();
 		this.currPersonThumb.src = "assets/img/people/" + name + ".png";
 
@@ -59,11 +58,21 @@ class AddRefForm extends Component {
 
 	formSubmit(e) {
 		e.preventDefault();
-		console.log(this.timecode.value);
-		console.log(this.screengrab.value);
-		console.log(this.from.value);
-		console.log(this.to.value);
-		console.log(this.location.value);
+		console.log("quote", this.quote.value);
+		console.log("timecode", this.timecode.value);
+		console.log("screengrab", this.screengrab.value);
+		console.log("from", this.from.value);
+		console.log("to", this.to.value);
+		console.log("location", this.location.value);
+		console.log("refThumb", this.refThumb.value);
+		console.log("refName", this.refName.value);
+		console.log("refIs", this.refIs.value);
+		console.log("refCategory", this.refCategory.value);
+		console.log("refYear", this.refYear.value);
+		console.log("wikipedia", this.wikipedia.value);
+		console.log("images", this.images.value);
+		console.log("video", this.video.value);
+		console.log("refNotes", this.refNotes.value);
 	}
 
 
@@ -77,7 +86,7 @@ class AddRefForm extends Component {
 	        </div>
 	        <div className="rf-quote-box">
 	        	<i className="rf-left-arrow fa fa-caret-left" aria-hidden="true"></i>
-        		<span className="rf-ref-quote"><textarea placeholder="quote"/></span>
+        		<span className="rf-ref-quote"><textarea placeholder="quote" ref={c => this.quote = c}/></span>
       		</div>
 	      </div> 
 
@@ -158,45 +167,45 @@ class AddRefForm extends Component {
 								<label htmlFor="ref-thumb-input" ref={c => this.refThumbUploadElement = c}><i className="fa fa-arrow-circle-up" aria-hidden="true"></i><br/>150 x 150px</label>
 								: ''
 							}
-							<input type="file" id="ref-thumb-input" onChange={this.uploadChange.bind(this)}/>
+							<input type="file" id="ref-thumb-input" ref={c => this.refThumb = c}onChange={this.uploadChange.bind(this)}/>
 						</div>
 						<div className="rf-ref-items">
 							<div className="rf-ref-descrip">
-								<input className="rf-ref-descrip-refbox" type="text" placeholder="Person, place, thing (RuPaul)" />
-								<input className="rf-ref-descrip-isa" type="text" placeholder=" is a ... (drag performer)" />
+								<input className="rf-ref-descrip-refbox" type="text" placeholder="Person, place, thing (RuPaul)" ref={c => this.refName = c}/>
+								<input className="rf-ref-descrip-isa" type="text" placeholder=" is a ... (drag performer)" ref={c => this.refIs = c}/>
 							</div>
 							<div className="rf-ref-tags">
 								<ul>
 
 									<li className="rf-button-link rf-button-select">
 										<div className="select-wrap">
-											<select>
+											<select ref={c => this.refCategory = c}>
 												{refCategories.map( (rc, index) => {
 													return <option value={rc} key={index}> {rc} </option>
 												})}
 											</select>
 										</div>
 									</li>
-									<li className=""><input className="rf-ref-tags-year" type="text" placeholder="year" /></li> 
+									<li className=""><input className="rf-ref-tags-year" type="text" placeholder="year" ref={c => this.refYear = c}/></li> 
 									
 									<li className="rf-ref-tags-link">
 										<i className="fa fa-wikipedia-w" aria-hidden="true"></i>
-										<input className="rf-ref-tags-media" type="text" placeholder="wikipedia link" />
+										<input className="rf-ref-tags-media" type="text" placeholder="wikipedia link" ref={c => this.wikipedia = c}/>
 									</li>
 									
 									<li className="rf-ref-tags-link">
 										<i className="fa fa-camera" aria-hidden="true"></i>
-										<input className="rf-ref-tags-media" type="text" placeholder="google image search results link" />
+										<input className="rf-ref-tags-media" type="text" placeholder="google image search results link" ref={c => this.images = c}/>
 									</li>
 
 									<li className="rf-ref-tags-link">
 										<i className="fa fa-video-camera" aria-hidden="true"></i>
-										<input className="rf-ref-tags-media" type="text" placeholder="video link" />
+										<input className="rf-ref-tags-media" type="text" placeholder="video link" ref={c => this.video = c}/>
 									</li>
 								</ul>
 
 								<div className="detail-notes">
-									<textarea placeholder="reference notes"/>
+									<textarea placeholder="reference notes" ref={c => this.refNotes = c}/>
 								</div> 	
 							</div>
 						</div>

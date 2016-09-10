@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import validate from './helpers/validate.js'; 
 
 // api
 const characters = ["Lorelai Gilmore","Rory Gilmore","Luke Danes","Lane Kim","Michel Gerard","Emily Gilmore","Richard Gilmore","Sookie St. James","Kirk Gleason","Paris Geller","Miss Patty","Dean Forester","Logan Huntzberger","Jackson Belleville","Taylor Doose","Babette Dell","Mrs. Kim","Zack Van Gerbig","Jess Mariano","Christopher Hayden","Louise Grant","Madeline Lynn","Brian Fuller","Gypsy","Doyle McMaster","Caesar","Andrew","Morey Dell","Grant","Liz Danes","Colin McCrae","Lulu","Finn","Jason Stiles","T.J.","Gil","April Nardini","Tom","Max Medina","Glenn Babble","Tristin Dugray","Hanlin Charleston","Marty","Anna Nardini","Dave Rygalski","Mitchum Huntzberger","Lindsay Forester","Bill", "Janet Billings","Drella","Tana Schrick","Nicole Leahy","Lucy","Reverend Archie Skinner","Olivia","A.K.","Brad Langford","Lorelai 'Trix' Gilmore","Rob","Rachel","Bootsy","Kyle","Mrs. O'Malley","Kyon","Henry Cho","Asher Fleming","Francie Jarvis","Honor Huntzberger","Robert Grimaldi","Rabbi David Barans","Shane","Clara Forester","Raj","Mrs. Cassini","Fred","Robert the Valet","Customer","Ed","Bob Merriam","Sherry Tinsdale","Alex Lesman","Rune","Sophie Bloom","Davey","Harry","Dereck","Jamie","Jimmy","Tobin","Joe Mastoni","Straub Hayden","Mayor Harry Porter","Burt","Beau Belleville","Francine Hayden","Sy","Nick","Simon McLane","T.J.'s Brother","Dr. Schultz","Floyd Stiles","Anson","Rich Bloomenfeld","Josh","Patel Chandrasekhar","Mrs. Slutsky","Manny","Russell Bynes","Meena","Grandpa Huntzberger","Marilyn","Marty (Singer)","Helen Thompson","Fred Larson","Western Shirt Man","Young Lorelai","Fencing Instructor","Judy Garland","Douglas Swope","The Proprietor","Mr. Hunter","Young Christopher","Bill Borden","May","Mae West","Carl","Marilyn Monroe","John Mattern","Bette Davis","Name Calling Woman","Chief Baker","Marjorie Rogers","Gwen Stefani","Iris Medlock","Uma Thurman","Fred Larson Jr.","Charlie","Janet Jackson","Jim Hatlestad","Waiter","Friar Lawerence","Chad","Stars Hollow Resident","Terence","Work Furlough Gang","Elton John", "other"].sort();
@@ -58,21 +59,26 @@ class AddRefForm extends Component {
 
 	formSubmit(e) {
 		e.preventDefault();
-		console.log("quote", this.quote.value);
-		console.log("timecode", this.timecode.value);
-		console.log("screengrab", this.screengrab.value);
-		console.log("from", this.from.value);
-		console.log("to", this.to.value);
-		console.log("location", this.location.value);
-		console.log("refThumb", this.refThumb.value);
-		console.log("refName", this.refName.value);
-		console.log("refIs", this.refIs.value);
-		console.log("refCategory", this.refCategory.value);
-		console.log("refYear", this.refYear.value);
-		console.log("wikipedia", this.wikipedia.value);
-		console.log("images", this.images.value);
-		console.log("video", this.video.value);
-		console.log("refNotes", this.refNotes.value);
+		let formData = {};
+		formData.quote =  this.quote.value;
+		formData.timecode =  this.timecode.value;
+		formData.screengrab =  this.screengrab.value;
+		formData.from =  this.from.value;
+		formData.to =  this.to.value;
+		formData.location =  this.location.value;
+		formData.refThumb =  this.refThumb.value;
+		formData.refName =  this.refName.value;
+		formData.refIs =  this.refIs.value;
+		formData.refCategory =  this.refCategory.value;
+		formData.refYear =  this.refYear.value;
+		formData.wikipedia =  this.wikipedia.value;
+		formData.images =  this.images.value;
+		formData.video =  this.video.value;
+		formData.refNotes =  this.refNotes.value;
+
+		const validData = validate(formData);
+		// if ValidData.status = false, (clear any error objects in state) add classes to the elements with bad values and add their object names to an array in state
+		// if true, clear all error objects in state and submit to firebase
 	}
 
 

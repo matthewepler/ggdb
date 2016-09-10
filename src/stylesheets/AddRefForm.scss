@@ -138,6 +138,15 @@ $highlight: white;
         left: 285px;
       }
 
+      .empty-screengrab {
+        width: 640px;
+        height: 432px;
+      }
+
+      .user-screengrab {
+        width: 640px;
+      }
+
     }
 
     .rf-screengrab-detail {
@@ -172,10 +181,7 @@ $highlight: white;
     }
   }
 
-  .empty-screengrab {
-    width: 640px;
-    height: 432px;
-  }
+
 
   .empty-refThumb {
     width: 150px;

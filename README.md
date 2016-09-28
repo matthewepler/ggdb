@@ -1,22 +1,20 @@
 # TO DO
+* text area text to darkslategrey (scene descrip)
 * form
-	-> finish making ref objects for each input, check console output
-	-> send data through scrip for validation
+	-> check validation
+			- refThumb (C://fakepath)?
+			- screengrab (C://fakepath)?
 	-> hookup firebase
-	-> add 'fs' and check for the matching image in 'fromChange' function
 
-* re-instate propTypes
+* seed dummy data in js file
+* organize layout for episodes and seasons
 
+* dataViz charts default open
 * dataviz
 
 * accounts and permissions
 
+* testing
+
+## NON-CRITICAL
 * links for each entry
-
-* social @ each entry (share icon with pop-up menu)
-
-* send for review to at least 3 designers and 5 fans
-
-
-# NICE TO HAVE'S
-* Wiki, image, video preview popups before click-through to link

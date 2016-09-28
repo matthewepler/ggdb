@@ -1,4 +1,13 @@
-$base-color-lt: #D3F0F4;
+//-- VARIABLES --//
+$lg-screen:  960;
+$med-screen: 768;
+$sm-screen:  640;
+$base-color-lt: #D3F0F4; //#E6F9FF
+$base-text: darkslategrey;
+$highlight: white;
+$circle-size: 9rem;
+$sm-circle-size: 4rem;
+
 
 * {
   padding: 0;

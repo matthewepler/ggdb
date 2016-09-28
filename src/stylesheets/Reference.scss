@@ -1,11 +1,5 @@
-//-- VARIABLES --//
-$lg-screen:  960;
-$med-screen: 768;
-$sm-screen:  640;
+@import 'App';
 
-$circle-size: 9rem;
-
-$base-color-lt: #E6F9FF;
 
 //-- MIXINS --//
 @mixin forLargeScreens($media) {

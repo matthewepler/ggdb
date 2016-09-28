@@ -127,6 +127,8 @@ class RefDetail extends Component {
 					</div>
 				</div>
 
+				<hr className="hr-line"/>
+
 				
 				<div className="ref-detail">
 					<div className="ref-thumb">

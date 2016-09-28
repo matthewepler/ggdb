@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import validate from './helpers/validate.js'; 
+import _ from 'underscore';
 
 // api
 const characters = ["Lorelai Gilmore","Rory Gilmore","Luke Danes","Lane Kim","Michel Gerard","Emily Gilmore","Richard Gilmore","Sookie St. James","Kirk Gleason","Paris Geller","Miss Patty","Dean Forester","Logan Huntzberger","Jackson Belleville","Taylor Doose","Babette Dell","Mrs. Kim","Zack Van Gerbig","Jess Mariano","Christopher Hayden","Louise Grant","Madeline Lynn","Brian Fuller","Gypsy","Doyle McMaster","Caesar","Andrew","Morey Dell","Grant","Liz Danes","Colin McCrae","Lulu","Finn","Jason Stiles","T.J.","Gil","April Nardini","Tom","Max Medina","Glenn Babble","Tristin Dugray","Hanlin Charleston","Marty","Anna Nardini","Dave Rygalski","Mitchum Huntzberger","Lindsay Forester","Bill", "Janet Billings","Drella","Tana Schrick","Nicole Leahy","Lucy","Reverend Archie Skinner","Olivia","A.K.","Brad Langford","Lorelai 'Trix' Gilmore","Rob","Rachel","Bootsy","Kyle","Mrs. O'Malley","Kyon","Henry Cho","Asher Fleming","Francie Jarvis","Honor Huntzberger","Robert Grimaldi","Rabbi David Barans","Shane","Clara Forester","Raj","Mrs. Cassini","Fred","Robert the Valet","Customer","Ed","Bob Merriam","Sherry Tinsdale","Alex Lesman","Rune","Sophie Bloom","Davey","Harry","Dereck","Jamie","Jimmy","Tobin","Joe Mastoni","Straub Hayden","Mayor Harry Porter","Burt","Beau Belleville","Francine Hayden","Sy","Nick","Simon McLane","T.J.'s Brother","Dr. Schultz","Floyd Stiles","Anson","Rich Bloomenfeld","Josh","Patel Chandrasekhar","Mrs. Slutsky","Manny","Russell Bynes","Meena","Grandpa Huntzberger","Marilyn","Marty (Singer)","Helen Thompson","Fred Larson","Western Shirt Man","Young Lorelai","Fencing Instructor","Judy Garland","Douglas Swope","The Proprietor","Mr. Hunter","Young Christopher","Bill Borden","May","Mae West","Carl","Marilyn Monroe","John Mattern","Bette Davis","Name Calling Woman","Chief Baker","Marjorie Rogers","Gwen Stefani","Iris Medlock","Uma Thurman","Fred Larson Jr.","Charlie","Janet Jackson","Jim Hatlestad","Waiter","Friar Lawerence","Chad","Stars Hollow Resident","Terence","Work Furlough Gang","Elton John", "other"].sort();
@@ -60,6 +61,8 @@ class AddRefForm extends Component {
 	formSubmit(e) {
 		e.preventDefault();
 		let formData = {};
+		formData.season = this.season.value;
+		formData.episode = this.episode.value;
 		formData.quote =  this.quote.value;
 		formData.timecode =  this.timecode.value;
 		formData.screengrab =  this.screengrab.value;
@@ -77,7 +80,11 @@ class AddRefForm extends Component {
 		formData.refNotes =  this.refNotes.value;
 
 		const validData = validate(formData);
-		// if ValidData.status = false, (clear any error objects in state) add classes to the elements with bad values and add their object names to an array in state
+		for (let obj in validData) {
+			console.log(obj, validData[obj]);
+		}
+		
+		// if any object has a value == 'false', clear any error objects in state add classes to the elements with bad values and add their object names to an array in state
 		// if true, clear all error objects in state and submit to firebase
 	}
 
@@ -108,6 +115,24 @@ class AddRefForm extends Component {
 							<input type="file" id="screengrab-input" ref={c => this.screengrab = c} onChange={this.uploadChange.bind(this)}/>
 						</div>
 						<div className="rf-time">
+							<span className="season-episode">
+								<p>Season:</p>
+								<div className="select-wrap">
+									<select className="season-select rf-button-link" ref={c => this.season = c}>
+										{_.range(7).map( (s, index) => {
+											return <option value={s} key={index}> {s + 1} </option>
+										})}
+									</select>
+								</div>
+								<p>Episode:</p>
+								<div className="select-wrap">
+									<select className="episode-select rf-button-link" ref={c => this.episode = c}>
+										{_.range(23).map( (e, index) => {
+											return <option value={e} key={index}> {e + 1} </option>
+										})}
+									</select>
+								</div>
+							</span>
 							<i className="fa fa-clock-o" aria-hidden="true"></i>
 							<span className="rf-button-link rf-ref-marker"><input type="text" placeholder="00:00" ref={c => this.timecode = c}/></span>
 						</div>
@@ -116,9 +141,7 @@ class AddRefForm extends Component {
 								<span className="rf-button-link from">
 									<select className="rf-from-input" ref={c => this.from = c} onChange={this.fromChange.bind(this)} >
 							  		{characters.map( (c, index) => {
-							  			
 							  					return <option value={c} key={index}> {c} </option> 
-							  			
 							  			})}
 									</select>
 								</span>

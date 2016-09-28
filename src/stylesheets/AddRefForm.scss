@@ -1,7 +1,4 @@
-$circle-size: 9rem;
-
-$base-color-lt: #E6F9FF;
-$highlight: white;
+@import 'App';
 
 .rf-headline-wrapper {
   display: flex;
@@ -24,6 +21,7 @@ $highlight: white;
     }
 
     .rf-person-input {
+      color: $base-text;
       margin-top: 10px;
       margin-left: 15px;
     }
@@ -57,7 +55,7 @@ $highlight: white;
       }
 
       & input {
-        color: black;
+        color: $base-text;
       }
     } 
 
@@ -84,19 +82,43 @@ $highlight: white;
   }
 
   .rf-time {
-    display: inline-block;
+    display: inline-flex;
     margin-top: 2rem;
 
+    .season-episode  {
+      display: inline-flex;
+
+      .select-wrap {
+        select {
+          margin-right: 2rem;
+          margin-top: -5px;
+          width: 50px;
+        }
+
+        &::after {
+          right: 30px;
+          top: 3px;
+        }
+      }
+
+      p {
+          margin-right: 1rem;
+        }
+
+    }
+
     .fa-clock-o {
+      color: $base-text;
       font-size: 2rem;
     }
 
     .rf-ref-marker {
+      border-bottom: 2px solid white;
       display: inline-block;
       width: 15%;
-      margin-left: 2rem;
+      margin-left: 1rem;
       input {
-        color: #2F2F2F;
+        color: $base-text;
         display: inline-block;
         font-size: 2rem;
         text-align: center;
@@ -176,6 +198,7 @@ $highlight: white;
     .rf-image-descrip {
       height: 75px;
       textarea {
+        color: $base-text;
         padding: 5px;
       }
     }
@@ -239,7 +262,7 @@ $highlight: white;
 
         input {
           border-bottom: 2px solid white;
-          color: black;
+          color: $base-text;
           margin-bottom: 2rem;
           padding: 5px;
         }
@@ -263,7 +286,7 @@ $highlight: white;
 
           input[type="text"] {
             border-bottom: 2px solid white;
-            color: black;
+            color: $base-text;
             padding: 5px;
             width: 100px;
           }
@@ -280,6 +303,7 @@ $highlight: white;
           width: 100%;
 
           input[type="text"] {
+            color: $base-text;
             width: 100%;
           }
         }
@@ -334,19 +358,19 @@ input[type=text] {
   border: none;
 
   &:focus {
-    border-bottom: 1px solid $highlight;
+    //border-bottom: 1px solid $highlight;
     outline: none;
   }
 }
 
 
 textarea {
+  color: $base-text;
   background-color: transparent;
   border-bottom: 2px solid white;
   border-left: transparent;
   border-right: transparent;
   border-top: transparent;
-  color: black;
   height: 100%;
   resize: none;
   width: 100%;
@@ -450,3 +474,4 @@ option {
   background: white;
   color: rgba(0,0,0,0.7);
 }
+

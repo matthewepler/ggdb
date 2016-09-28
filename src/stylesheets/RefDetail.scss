@@ -1,8 +1,7 @@
-$lg-screen:  960;
-$med-screen: 768;
-$sm-screen:  640;
+@import 'App';
 
-$circle-size: 4rem;
+$base-color-lt: #E6F9FF;
+$highlight: white;
 
 @mixin forLargeScreens($media) {
 	@media (min-width: $media/16+em) { @content; }
@@ -11,26 +10,27 @@ $circle-size: 4rem;
 .ref-detail-wrapper {
 	display: flex;
 	flex-direction: column;
-	max-width: 95%;
-	padding-left: 2.5 * $circle-size + 1rem;
+	max-width: 88%;
+	padding-left: 4 * $sm-circle-size + 1.5rem;
 	font-family: 'Source Sans Pro', sans-serif;
 
 	p {
+		color: $base-text;
 		font-size: 13pt;
 	}
 
 	.screengrab {
+		margin-bottom: 2rem;
 		img {
 			max-width: 500px;
 		}
 	}
 				
 	.ref-detail {
+		display: flex;
 		.ref-thumb {
 			img {
 				max-width: 150px;
-				height: auto;
-				float: left;
 				padding-right: 1.5em;
 			}
 		}
@@ -40,11 +40,17 @@ $circle-size: 4rem;
 			font-family: 'Source Sans Pro', sans-serif;
 		}
 
-		.fa-circle {
-			color: lightgrey;
+		.ref-descrip {
+			& > p {
+				font-size: 2rem;
+			}
+			.ref-descrip-strong {
+				font-weight: 600;
+			}
 		}
-		.fa-fix {
-			padding-top: 2px;
+
+		.image-descrip {
+			margin-bottom: 3rem;
 		}
 	}
 }
@@ -53,20 +59,27 @@ $circle-size: 4rem;
 	display: none;
 }
 
+.button-link {
+	border-radius: 10px;
+	color: #2F2F2F;
+	background-color: $base-color-lt;
+	padding: 0.5rem;
+	padding: 0.5rem 1rem;
+	margin: 1rem 0;
+
+	&:hover {
+		cursor: pointer;
+		border: 3px solid $highlight;
+	}
+}
+
 .screengrab-detail {
 	color: white;
 	font-size: 2rem;
-	margin-top: 1rem;
 	margin-bottom: 2rem;
+	margin-top: 1rem;
 	
-	.from-to {
-		color: white;
-		padding: 0.5rem;
-		border: 3px solid white;
-		border-radius: 10px;
-		padding: 0.5rem 1rem;
-		margin: 1rem 0;
-
+	.from, .to, .location {
 		:first-child {
 			margin-left: 0;
 		}
@@ -79,13 +92,28 @@ $circle-size: 4rem;
 	}
 }
 
+.outline {
+	border: 3px solid $highlight;
+}
 
+.ref-tags {
+	ul {
+		display: flex;
+		align-items: center;
+	
+		li {
+			list-style-type: none;
+			margin-right: 1.5rem;
+			&:last-child {
+				margin-right: none;
+			}
+		}
+	}
+}
 
-
-
-
-
-
+.hr-line {
+	color: $base-text;
+}
 
 
 

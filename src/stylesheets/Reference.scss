@@ -1,9 +1,5 @@
-//-- VARIABLES --//
-$lg-screen:  960;
-$med-screen: 768;
-$sm-screen:  640;
+@import 'App';
 
-$circle-size: 9rem;
 
 //-- MIXINS --//
 @mixin forLargeScreens($media) {
@@ -34,8 +30,6 @@ $circle-size: 9rem;
 	align-items: center;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 300;
-	// border-bottom: solid 1px paleturquoise;
-	padding-bottom: 3rem;
 
 	&:hover {
 		text-decoration: none;
@@ -46,12 +40,12 @@ $circle-size: 9rem;
 		}
 
 		.ref-quote {
-			border: 3px solid paleturquoise;
+			border: 3px solid $base-color-lt;
 		}
 	}
 
 	.ref-marker {
-		color: paleturquoise;
+		color: $base-color-lt;
 		width: 5.5rem;
 		padding-top: 1rem;
 		font-size: 14pt;
@@ -62,7 +56,7 @@ $circle-size: 9rem;
 		img {
 			width: $circle-size;
 			border-radius: 50%;
-			border: double 8px paleturquoise;
+			border: double 8px $base-color-lt;
 		}
 	}	
 
@@ -72,7 +66,7 @@ $circle-size: 9rem;
 	// }
 
 	.ref-quote {
-		background-color: paleturquoise;
+		background-color: $base-color-lt;
 		color: #2F2F2F;
 		padding: 1rem 1rem;
 		font-size: 2.5rem;
@@ -99,7 +93,7 @@ $circle-size: 9rem;
 .left-arrow {
 	font-size: 20pt;
 	padding-left: 1rem;
-	color: paleturquoise;
+	color: $base-color-lt;
 	margin-right: -2px;
 }
 

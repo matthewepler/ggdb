@@ -13,7 +13,7 @@ class Reference extends Component {
   constructor() {
     super();
     this.state = {
-      open: true,
+      open: false, // TO-DO - duplicate of state value in App.js <!>
     };
   }
 
@@ -27,16 +27,29 @@ class Reference extends Component {
       'open' : this.state.open,
     });
 
-  	const lineSplit = this.props.reference.quote.split(this.props.reference.ref);
-  	
+    // TO DO - throw error? avoid in data validation if possible
+    const ref = this.props.reference.refName;
+    const quote = this.props.reference.quote.split(ref);
+
+    const name = this.props.reference.from.replace(/^\s+|\s+$|\s|\./g, '').toLowerCase();
+    const personThumb =  "assets/img/people/" + name + ".png";
+    
     const headline = (
       <div className="headline" onClick={this.handleClick.bind(this)}>
-        <p className="ref-marker">{this.props.reference.marker}</p>
+      <div className="headline-wrapper">
+        <p className="ref-marker">{this.props.reference.timecode}</p>
         <div className="person-thumb">
-          <img className="clip-circle" src="assets/img/people/rorygilmore.png" alt="RuPaul" />
+          <img className="clip-circle" alt="ref image" src={personThumb}/>
         </div>
-        <i className="left-arrow fa fa-caret-left" aria-hidden="true"></i>
-        <span className={panelClasses}>{lineSplit[0]}<strong>{this.props.reference.ref}</strong>{lineSplit[1]}</span>
+          <i className="left-arrow fa fa-caret-left" aria-hidden="true"></i>
+          <div className={panelClasses}>
+            <span>
+                {quote[0]}
+                <strong>{ref}</strong>
+                {quote[1]}
+            </span>
+          </div>
+        </div>
       </div> 
     );
 
@@ -48,9 +61,9 @@ class Reference extends Component {
 
   	return (
       <Panel className="ref-panel" header={header} collapsible expanded={this.state.open}>
-     		<RefDetail reference={this.props.reference}/>
-   		</Panel>
-    );
+        <RefDetail reference={this.props.reference} key={this.props.reference.id}/>
+      </Panel>
+    )
   }
 }
  

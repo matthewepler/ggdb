@@ -21,7 +21,7 @@ class App extends Component {
 
   getDummyData() {
     return plugs.map( p => (
-      <Reference key={p._id} reference={p} />
+      <Reference key={p.id} reference={p} />
     ));
   }
 

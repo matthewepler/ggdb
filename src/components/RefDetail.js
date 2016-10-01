@@ -83,7 +83,7 @@ class RefDetail extends Component {
 			<div className="ref-detail-wrapper">
 				
 				<div className="screengrab">
-					<img src={"assets/img/screens/rupaul.jpg"} alt="screengrab" />
+					<img src={this.props.reference.screengrab} alt="screengrab" />
 					
 					<div className="screengrab-detail"> 
 				{/* dev note: 
@@ -132,31 +132,31 @@ class RefDetail extends Component {
 				
 				<div className="ref-detail">
 					<div className="ref-thumb">
-						<img src="assets/img/refs/rupaul2.jpg" alt="RuPaul" />
+						<img src={this.props.reference.refThumb} alt="RuPaul" />
 					</div>
 					<div>
 						<div className="ref-descrip">
 							<p><span className="button-link ref-descrip-strong"
 											 onClick={this.refDetailClick.bind(this)}
-											 dangerouslySetInnerHTML={{__html: this.props.reference.ref}}>
-								 </span> {this.props.reference.descrip}
+											 dangerouslySetInnerHTML={{__html: this.props.reference.refName}}>
+								 </span> {this.props.reference.refIs}
 						  </p>
 						</div>
 						<div className="ref-tags">
 							<ul>
 								<li className="button-link" 
 									onClick={this.refDetailClick.bind(this)}
-									dangerouslySetInnerHTML={{__html: this.props.reference.category}}>
+									dangerouslySetInnerHTML={{__html: this.props.reference.refCategory}}>
 								</li>
 								{ 
-									this.props.reference.year.length > 1 ? 
+									this.props.reference.refYear2.length >= 3 ? 
 									<li className="button-link" 
 										onClick={this.refDetailClick.bind(this)} 
-										dangerouslySetInnerHTML={{__html: `${this.props.reference.year[0]} - ${this.props.reference.year[1]}`}}>
+										dangerouslySetInnerHTML={{__html: `${this.props.reference.refYear1} - ${this.props.reference.refYear2}`}}>
 									</li> 
 									: <li className="button-link" 
 											onClick={this.refDetailClick.bind(this)} 
-											dangerouslySetInnerHTML={{__html: this.props.reference.year[0]}}>
+											dangerouslySetInnerHTML={{__html: this.props.reference.refYear1}}>
 										</li> 
 								}
 								<li>
@@ -182,7 +182,7 @@ class RefDetail extends Component {
 							</Panel>
 
 							<div className="detail-notes">
-								{this.props.reference.detailNote}
+								{this.props.reference.refNotes}
 							</div> 	
 						</div>
 					</div>

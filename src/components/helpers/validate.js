@@ -8,11 +8,13 @@ export default function(data) {
 		from: 			{value: null, msg: null},
 		to: 		  	{value: null, msg: null},
 		location: 	{value: null, msg: null},
+		description:{value: null, msg: null},
 		refThumb: 	{value: null, msg: null},
 		refName: 		{value: null, msg: null},
 		refIs: 			{value: null, msg: null},
 		refCategory:{value: null, msg: null},
-		refYear: 		{value: null, msg: null},
+		refYear1: 	{value: null, msg: null},
+		refYear2: 	{value: null, msg: null},
 		wikipedia:  {value: null, msg: null},
 		images: 		{value: null, msg: null},
 		video: 			{value: null, msg: null},
@@ -37,7 +39,7 @@ export default function(data) {
 	validData.episode.value = data.episode;
 
 	// console.log("timecode", data.timecode);
-	if (/(\d+):(\d\d)/.test(data.timecode)) {
+	if (/^([0-9][0-9]?)\:([0-9][0-9])$/.test(data.timecode)) {
 		validData.timecode.value = data.timecode;
 	} else {
 		validData.timecode.value = false;
@@ -63,6 +65,14 @@ export default function(data) {
 	// console.log("location", data.location);
 	// no validation needed since it's coming from a pre-defined list
 	validData.location.value = data.location;
+
+	// console.log("scene description", data.description);
+	if (/(?:\/\/)/g.test(data.description) === false)  { // cheap search for links
+		validData.description.value = data.description;
+	} else {
+		validData.description.value = false;
+		validData.description.msg = "Your scene description appears to have a link in it. Please remove it."
+	}
 
 	// console.log("refThumb", data.refThumb);
 		if (/\.(?:jpe?g|png|gif)$/.test(data.refThumb)) {
@@ -96,12 +106,20 @@ export default function(data) {
 	// no validation needed since it's coming from a pre-defined list
 	validData.refCategory.value = data.refCategory;
 
-	// console.log("refYear", data.refYear);
+	// console.log("refYear1", data.refYear);
 	if (/-?\d{4}/.test(data.refYear)) {
-		validData.refYear.value = data.refYear;
+		validData.refYear1.value = data.refYear1;
 	} else {
-		validData.refYear.value = false;
-		validData.refYear.msg = "Year should be 4 digits. If 'B.C.', make it negative (and still 4 digits, so 45 B.C. is -0045.";
+		validData.refYear1.value = false;
+		validData.refYear1.msg = "Years should be 4 digits. If 'B.C.', make it negative (and still 4 digits, so 45 B.C. is -0045.";
+	}
+
+	// console.log("refYear2", data.refYear);
+	if (/-?\d{4}/.test(data.refYear)) {
+		validData.refYear2.value = data.refYear2;
+	} else {
+		validData.refYear2.value = false;
+		validData.refYear2.msg = "Years should be 4 digits. If 'B.C.', make it negative (and still 4 digits, so 45 B.C. is -0045.";
 	}
 
 	// console.log("wikipedia", data.wikipedia);

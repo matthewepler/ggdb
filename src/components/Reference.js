@@ -61,7 +61,7 @@ class Reference extends Component {
 
   	return (
       <Panel className="ref-panel" header={header} collapsible expanded={this.state.open}>
-        
+        <RefDetail reference={this.props.reference} key={this.props.reference.id}/>
       </Panel>
     )
   }

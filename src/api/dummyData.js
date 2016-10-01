@@ -386,7 +386,7 @@ export const plugs = [
 			"description": "Lorelai asks for a truce in exchange for the opportunity for Rory to murder her later. Ah, parenting.",
 			"refThumb" : "assets/img/refs/menendez_bros.jpg",
 			"refName" : "Menendez",
-			"refIs" : "(brothers, the) were siblings convicted of killing their parents.",
+			"refIs" : "(brothers) were siblings convicted of killing their parents.",
 			"refCategory" : "News",
 			"refYear1" : "1994", 
 			"refYear2": "", 

@@ -36,16 +36,20 @@ class Reference extends Component {
     
     const headline = (
       <div className="headline" onClick={this.handleClick.bind(this)}>
+      <div className="headline-wrapper">
         <p className="ref-marker">{this.props.reference.timecode}</p>
         <div className="person-thumb">
           <img className="clip-circle" alt="ref image" src={personThumb}/>
         </div>
-        <i className="left-arrow fa fa-caret-left" aria-hidden="true"></i>
-        <span className={panelClasses}>
-            {quote[0]}
-            <strong>{ref}</strong>
-            {quote[1]}
-        </span>
+          <i className="left-arrow fa fa-caret-left" aria-hidden="true"></i>
+          <div className={panelClasses}>
+            <span>
+                {quote[0]}
+                <strong>{ref}</strong>
+                {quote[1]}
+            </span>
+          </div>
+        </div>
       </div> 
     );
 

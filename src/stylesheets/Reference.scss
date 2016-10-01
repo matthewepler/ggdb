@@ -23,7 +23,11 @@
 		background-color: transparent;
 }
 
-.headline > a {
+.headline> a:hover {
+	text-decoration: none;
+}
+
+.headline .headline-wrapper {
 	display: flex;
 	flex-direction: row;
 	padding-left: 1rem;		
@@ -41,18 +45,20 @@
 
 		.ref-quote {
 			border: 3px solid $base-color-lt;
+			text-decoration: none;
 		}
 	}
 
 	.ref-marker {
 		color: $base-color-lt;
-		width: 5.5rem;
+		min-width: 55px;
 		padding-top: 1rem;
 		font-size: 14pt;
 		text-decoration: none;
 	}
 	
 	.person-thumb {
+		width: 90px;
 		img {
 			width: $circle-size;
 			border-radius: 50%;
@@ -68,11 +74,16 @@
 	.ref-quote {
 		background-color: $base-color-lt;
 		color: #2F2F2F;
+		flex: 2;
 		padding: 1rem 1rem;
 		font-size: 2.5rem;
 		font-weight: 300;
 		letter-spacing: 1.25px;
 		border-radius: 5px;
+
+		span {
+			font-size: 2.5rem;
+		}
 
 		&:hover {
 			text-decoration: none;

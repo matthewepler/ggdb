@@ -182,7 +182,7 @@ class RefDetail extends Component {
 							</Panel>
 
 							<div className="detail-notes">
-								{this.props.reference.detailNote}
+								{this.props.reference.refNotes}
 							</div> 	
 						</div>
 					</div>

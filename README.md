@@ -1,20 +1,10 @@
 # TO DO
-
-<RefDetail reference={this.props.reference} key={this.props.reference.id}/>
-
-* import JS files and list
 * add season filter link menu on left and hook it up
 * default to season 1 on load
-
-
 
 * make ref image clickable in reg view (link to empty tab showing image)
 
 * image/video/wiki grey-ed out if no link
-
-* add page "Contributor's Reference Guide"
-
-* organize layout for episodes and seasons
 
 * dataViz charts default open
 * dataviz
@@ -29,9 +19,11 @@
 * accounts and permissions
 
 * testing
-* do I need to insert escape characters to avoid breaking strings with " in them?
+	- do I need to insert escape characters to avoid breaking strings with " in them?
 
-* fucking search
+* add page "Contributor's Reference Guide"
+* search
+
 
 ## NON-CRITICAL
 * links for each entry

@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import validate from './helpers/validate.js'; 
-import _ from 'underscore';
+import _ from 'underscore'; 
 
 // api
-const characters = ["Lorelai Gilmore","Rory Gilmore","Luke Danes","Lane Kim","Michel Gerard","Emily Gilmore","Richard Gilmore","Sookie St. James","Kirk Gleason","Paris Geller","Miss Patty","Dean Forester","Logan Huntzberger","Jackson Belleville","Taylor Doose","Babette Dell","Mrs. Kim","Zack Van Gerbig","Jess Mariano","Christopher Hayden","Louise Grant","Madeline Lynn","Brian Fuller","Gypsy","Doyle McMaster","Caesar","Andrew","Morey Dell","Grant","Liz Danes","Colin McCrae","Lulu","Finn","Jason Stiles","T.J.","Gil","April Nardini","Tom","Max Medina","Glenn Babble","Tristin Dugray","Hanlin Charleston","Marty","Anna Nardini","Dave Rygalski","Mitchum Huntzberger","Lindsay Forester","Bill", "Janet Billings","Drella","Tana Schrick","Nicole Leahy","Lucy","Reverend Archie Skinner","Olivia","A.K.","Brad Langford","Lorelai 'Trix' Gilmore","Rob","Rachel","Bootsy","Kyle","Mrs. O'Malley","Kyon","Henry Cho","Asher Fleming","Francie Jarvis","Honor Huntzberger","Robert Grimaldi","Rabbi David Barans","Shane","Clara Forester","Raj","Mrs. Cassini","Fred","Robert the Valet","Customer","Ed","Bob Merriam","Sherry Tinsdale","Alex Lesman","Rune","Sophie Bloom","Davey","Harry","Dereck","Jamie","Jimmy","Tobin","Joe Mastoni","Straub Hayden","Mayor Harry Porter","Burt","Beau Belleville","Francine Hayden","Sy","Nick","Simon McLane","T.J.'s Brother","Dr. Schultz","Floyd Stiles","Anson","Rich Bloomenfeld","Josh","Patel Chandrasekhar","Mrs. Slutsky","Manny","Russell Bynes","Meena","Grandpa Huntzberger","Marilyn","Marty (Singer)","Helen Thompson","Fred Larson","Western Shirt Man","Young Lorelai","Fencing Instructor","Judy Garland","Douglas Swope","The Proprietor","Mr. Hunter","Young Christopher","Bill Borden","May","Mae West","Carl","Marilyn Monroe","John Mattern","Bette Davis","Name Calling Woman","Chief Baker","Marjorie Rogers","Gwen Stefani","Iris Medlock","Uma Thurman","Fred Larson Jr.","Charlie","Janet Jackson","Jim Hatlestad","Waiter","Friar Lawerence","Chad","Stars Hollow Resident","Terence","Work Furlough Gang","Elton John", "other"].sort();
+const characters = ["Lorelai Gilmore","Rory Gilmore","Luke Danes","Lane Kim","Michel Gerard","Emily Gilmore","Richard Gilmore","Sookie St. James","Kirk Gleason","Paris Geller","Miss Patty","Dean Forester","Logan Huntzberger","Jackson Belleville","Taylor Doose","Babette Dell","Mrs. Kim","Zack Van Gerbig","Jess Mariano","Christopher Hayden","Louise Grant","Madeline Lynn","Brian Fuller","Gypsy","Doyle McMaster","Caesar","Andrew","Morey Dell","Grant","Liz Danes","Colin McCrae","Lulu","Finn","Jason Stiles","T.J.","Gil","April Nardini","Tom","Max Medina","Glenn Babble","Tristin Dugray","Hanlin Charleston","Marty","Anna Nardini","Dave Rygalski","Mitchum Huntzberger","Lindsay Forester","Bill", "Janet Billings","Drella","Tana Schrick","Nicole Leahy","Lucy","Reverend Archie Skinner","Olivia","A.K.","Brad Langford","Lorelai 'Trix' Gilmore","Rob","Rachel","Bootsy","Kyle","Mrs. O'Malley","Kyon","Henry Cho","Asher Fleming","Francie Jarvis","Honor Huntzberger","Robert Grimaldi","Rabbi David Barans","Shane","Clara Forester","Raj","Mrs. Cassini","Fred","Robert the Valet","Customer","Ed","Bob Merriam","Sherry Tinsdale","Alex Lesman","Rune","Sophie Bloom","Davey","Harry","Dereck","Jamie","Jimmy","Tobin","Joe Mastoni","Straub Hayden","Mayor Harry Porter","Burt","Beau Belleville","Francine Hayden","Sy","Nick","Simon McLane","T.J.'s Brother","Dr. Schultz","Floyd Stiles","Anson","Rich Bloomenfeld","Josh","Patel Chandrasekhar","Mrs. Slutsky","Manny","Russell Bynes","Meena","Grandpa Huntzberger","Marilyn","Marty (Singer)","Helen Thompson","Fred Larson","Western Shirt Man","Young Lorelai","Fencing Instructor","Judy Garland","Douglas Swope","The Proprietor","Mr. Hunter","Young Christopher","Bill Borden","May","Mae West","Carl","Marilyn Monroe","John Mattern","Bette Davis","Name Calling Woman","Chief Baker","Marjorie Rogers","Gwen Stefani","Iris Medlock","Uma Thurman","Fred Larson Jr.","Charlie","Janet Jackson","Jim Hatlestad","Waiter","Friar Lawerence","Chad","Stars Hollow Resident","Terence","Work Furlough Gang","Elton John", "other", "Mrs. Traister"].sort();
 const locations = ["Lorelai's House", "The Gilmore House", "Town Square", "Chilton", "Luke's Diner", "Kim's Antiques", "Miss Patty's School of Ballet", "Independence Inn", "Doose's Market", "Dragonfly Inn", "Weston's Bakery", "Stars Hollow High School", "Stars Hollow History Museum", "Yale", "other"].sort();
 const refCategories = ["TV", "Music", "Film", "Literature", "Sports", "Institution", "Person", "Comedy/Comic", "History", "Brand", "Theatre", "Fashion", "News", "Science", "Religion", "Geography/Place"].sort();
 
@@ -69,11 +69,13 @@ class AddRefForm extends Component {
 		formData.from =  this.from.value;
 		formData.to =  this.to.value;
 		formData.location =  this.location.value;
+		formData.description = this.description.value;
 		formData.refThumb =  this.refThumb.value;
 		formData.refName =  this.refName.value;
 		formData.refIs =  this.refIs.value;
 		formData.refCategory =  this.refCategory.value;
-		formData.refYear =  this.refYear.value;
+		formData.refYear1 =  this.refYear1.value;
+		formData.refYear2 =  this.refYear2.value;
 		formData.wikipedia =  this.wikipedia.value;
 		formData.images =  this.images.value;
 		formData.video =  this.video.value;
@@ -148,7 +150,7 @@ class AddRefForm extends Component {
 							</div>
 
 						  	<span><i className="fa fa-long-arrow-right" aria-hidden="true"></i></span>
-							
+		
 							<div className="select-wrap">
 								<span className="rf-button-link to">
 									<select className="rf-to-input" ref={c => this.to = c}>
@@ -184,7 +186,7 @@ class AddRefForm extends Component {
 						</div>
 						
 						<div className="rf-image-descrip">
-							<textarea placeholder="scene description"/>
+							<textarea placeholder="scene description" ref={c => this.description = c}/>
 						</div>
 					</div>
 
@@ -193,7 +195,7 @@ class AddRefForm extends Component {
 							<img className={this.state.currRefThumb === null ? 'empty-refThumb' : ''} src="" ref={c => this.refThumbElement = c}/>
 							{
 								this.state.currRefThumb === null ? 
-								<label htmlFor="ref-thumb-input" ref={c => this.refThumbUploadElement = c}><i className="fa fa-arrow-circle-up" aria-hidden="true"></i><br/>150 x 150px</label>
+								<label htmlFor="ref-thumb-input" ref={c => this.refThumbUploadElement = c}><i className="fa fa-arrow-circle-up" aria-hidden="true"></i><br/>image</label>
 								: ''
 							}
 							<input type="file" id="ref-thumb-input" ref={c => this.refThumb = c}onChange={this.uploadChange.bind(this)}/>
@@ -215,11 +217,15 @@ class AddRefForm extends Component {
 											</select>
 										</div>
 									</li>
-									<li className=""><input className="rf-ref-tags-year" type="text" placeholder="year" ref={c => this.refYear = c}/></li> 
+									<li className="years">
+										<input className="rf-ref-tags-year" type="text" placeholder="year" ref={c => this.refYear1 = c}/>
+										-
+										<input className="rf-ref-tags-year" type="text" placeholder="year" ref={c => this.refYear2 = c}/>
+									</li> 
 									
 									<li className="rf-ref-tags-link">
 										<i className="fa fa-wikipedia-w" aria-hidden="true"></i>
-										<input className="rf-ref-tags-media" type="text" placeholder="wikipedia link" ref={c => this.wikipedia = c}/>
+										<input className="rf-ref-tags-media" type="text" placeholder="wikipedia direct link" ref={c => this.wikipedia = c}/>
 									</li>
 									
 									<li className="rf-ref-tags-link">
@@ -229,7 +235,7 @@ class AddRefForm extends Component {
 
 									<li className="rf-ref-tags-link">
 										<i className="fa fa-video-camera" aria-hidden="true"></i>
-										<input className="rf-ref-tags-media" type="text" placeholder="video link" ref={c => this.video = c}/>
+										<input className="rf-ref-tags-media" type="text" placeholder="video link (search results or direct link)" ref={c => this.video = c}/>
 									</li>
 								</ul>
 

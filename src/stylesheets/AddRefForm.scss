@@ -219,7 +219,6 @@
       img {
         background-image: linear-gradient(to bottom, darkturquoise, $base-color-lt  160%);
         width: 150px;
-        height: 150px;
         margin-right: 1.5em;
       }
 
@@ -289,6 +288,23 @@
             color: $base-text;
             padding: 5px;
             width: 100px;
+          }
+        }
+
+        .years {
+            display: flex;
+            flex-direction: row;
+            width: 500px;
+
+            input[type="text"] {
+              text-align: center;
+              width: 50px;
+          }
+          p {
+            color: $base-color-lt;
+            font-size: 1.5rem;
+            margin-left: 2rem;
+            margin-top: 0.5rem;
           }
         }
 

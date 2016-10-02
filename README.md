@@ -1,32 +1,26 @@
 # TO DO
-* add season filter link menu on left and hook it up
-	-> Drop down panel selector for Season & episode
-	-> all centered and on top. Title format = (S1E4)
-	-> close on selection of episode
-* default to season 1 on load
+* port to express
+*	hookup firebase & google cloud
 
-* make ref image clickable in reg view (link to empty tab showing image)
+* test form
+	-> check validation
+			- refThumb (C://fakepath)?
+			- screengrab (C://fakepath)?
 
-* image/video/wiki grey-ed out if no link
+* input dummy data to firebase
 
 * dataViz charts default open
 * dataviz
 
-* form
-	-> check validation
-			- refThumb (C://fakepath)?
-			- screengrab (C://fakepath)?
-	-> hookup firebase
-	-> load from JSON option
-
 * accounts and permissions
 
-* testing
+* contribution testing
 	- do I need to insert escape characters to avoid breaking strings with " in them?
 
 * add page "Contributor's Reference Guide"
-* search
+* add page "About"
 
+* API - return JSON with keywords? - quick tutorial or read-up suggested.
 
 ## NON-CRITICAL
 * links for each entry
@@ -44,3 +38,5 @@ Example: Britney Spears' "...Baby One More Time" released in 1999 and she's stil
 
 * refName should appear exactly as it did in the quote. If it is a nickname, or shortened to just a first name, then address this in is/was. Ex" Flo Jo (instead of Florence Griffith Joyner) or Melville (instead of Herman Melville)
 or "Oprah" -> Oprah (Winfrey) is a popular talk show host."
+
+* link to the guide in the public "about" page

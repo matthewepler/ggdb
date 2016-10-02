@@ -4,6 +4,7 @@ $med-screen: 768;
 $sm-screen:  640;
 $base-color-lt: #D3F0F4; //#E6F9FF
 $base-text: darkslategrey;
+$base-font: Raleway;
 $highlight: white;
 $circle-size: 9rem;
 $sm-circle-size: 4rem;
@@ -54,27 +55,77 @@ body {
     margin: 0 auto;
     width: 100%;
 
+    .title-wrapper {
+      text-align: center;
+      h1.title {
+        color: white;
+        font-family: Raleway;
+        font-size: 6rem;
+        font-weight: 100;
+        margin-top: 2rem;
+        width: 100%;
+      }
+
+      p.subtitle {
+        color: white;
+        font-family: $base-font;
+        font-size: 2rem;
+        font-weight: 200;
+        letter-spacing: 0.5px;
+        width: 100%;
+      }
+    }
+
     .nav-selectors {
       text-align: center;
       margin: 2rem auto;
+
+      h2 {
+        color: $base-text;
+        font-family: "Source Sans Pro";
+        font-size: 2.5rem;
+      }
   
       .panel-title {
         width: 100%;
-        margin: 0 2rem;
+
         @include forSmallScreens($sm-screen) {
           margin: 0;
         }
 
          a {
-          color: white;
-          font-family: "Source Sans Pro";
-          font-size: 6rem;
+          background-color: white;
+          border-radius: 40px;
+          color: darkturquoise;
+          font-family: $base-font;
+          font-size: 4rem;
           font-weight: 200;
           margin: 0 2rem;
+          padding: 0 2.25rem;
+          padding-bottom: 0.25rem;
           width: 100%;
+
+          &:hover {
+            border: 8px solid white;
+          }
          }
       }
+
+      .nav-panel {
+        .season-dots {
+          display: flex;
+          justify-content: center;
+        }
+
+         .episode-dots {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          margin: 0 12rem;
+        }
+      }
     }
+
     div.toolbar-wrapper {
       @include forSmallScreens($sm-screen) {
         margin: 0;

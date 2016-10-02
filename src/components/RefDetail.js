@@ -132,7 +132,7 @@ class RefDetail extends Component {
 				
 				<div className="ref-detail">
 					<div className="ref-thumb">
-						<img src={this.props.reference.refThumb} alt="RuPaul" />
+						<img src={this.props.reference.refThumb} alt="reference thumbnail" />
 					</div>
 					<div>
 						<div className="ref-descrip">

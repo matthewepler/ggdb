@@ -12,7 +12,7 @@ class Toolbar extends Component {
 	constructor() {
 		super();
 		this.state = {
-			open: true,
+			open: false,
 		};
 	}
 

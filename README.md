@@ -1,5 +1,8 @@
 # TO DO
 * add season filter link menu on left and hook it up
+	-> Drop down panel selector for Season & episode
+	-> all centered and on top. Title format = (S1E4)
+	-> close on selection of episode
 * default to season 1 on load
 
 * make ref image clickable in reg view (link to empty tab showing image)

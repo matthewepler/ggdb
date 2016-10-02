@@ -8,6 +8,13 @@ $highlight: white;
 $circle-size: 9rem;
 $sm-circle-size: 4rem;
 
+@mixin forLargeScreens($media) {
+  @media (min-width: $media/16+em) { @content; }
+}
+
+@mixin forSmallScreens($media) {
+    @media (max-width: $media/16+em) { @content; }
+}
 
 * {
   padding: 0;
@@ -29,10 +36,66 @@ body {
  }
 
  .app-container {
-  max-width: 800px;
-  margin: 0 auto;
+  display: flex;
   min-height: 100%;
   background: rgba(0, 0, 0, 0); 
+
+  .app-left-col {
+    flex: 1;
+    @include forSmallScreens($sm-screen) {
+      flex: 0;
+    }
+    max-width: 15%;
+  }
+
+  .app-mid-col {
+    flex: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+
+    .nav-selectors {
+      text-align: center;
+      margin: 2rem auto;
+  
+      .panel-title {
+        width: 100%;
+        margin: 0 2rem;
+        @include forSmallScreens($sm-screen) {
+          margin: 0;
+        }
+
+         a {
+          color: white;
+          font-family: "Source Sans Pro";
+          font-size: 6rem;
+          font-weight: 200;
+          margin: 0 2rem;
+          width: 100%;
+         }
+      }
+    }
+    div.toolbar-wrapper {
+      @include forSmallScreens($sm-screen) {
+        margin: 0;
+        text-align: center;
+      }
+      button.addButton {
+        @include forSmallScreens($sm-screen) {
+          margin: 0;
+          width: 90%;
+        }
+      }
+    }
+  }
+
+  .app-right-col {
+    flex: 1;
+    @include forSmallScreens($sm-screen) {
+      flex: 0;
+    }
+    max-width: 15%;
+  }
 }
 
 .btn:focus {

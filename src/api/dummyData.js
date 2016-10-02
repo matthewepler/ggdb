@@ -74,7 +74,7 @@ export const plugs = [
 			"screengrab" : "assets/img/screens/s_huckleberry_fin.jpg",
 			"from" : "Mrs. Traister",
 			"to" : "other",
-			"location" : "Chilton",
+			"location" : "Stars Hollow High School",
 			"description": "Girls around Rory try finger nail polish while she ignores them and writes her assignment. They are astonished at her nerdiness. Psht.",
 			"refThumb" : "assets/img/refs/huckleberryfinn.jpg",
 			"refName" : "Huckleberry Finn",
